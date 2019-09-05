@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <!-- 指定驱动包 -->
+  <classPathEntry location="D:/apache-maven-3.6.1/.m2/repository/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar" />
+  
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  	<!-- 指定数据库连接参数 -->
+    <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/ydma"
+        userId="root"
+        password="123456">
+        <property name="nullCatalogMeansCurrent" value="true"/>
+    </jdbcConnection>
+	
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+	
+	<!-- 指定 实体类  路径-->
+    <javaModelGenerator targetPackage="top.chao.entity" targetProject="./src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+	<!-- 指定 SQL定义xml文件  路径-->
+    <sqlMapGenerator targetPackage="top.chao.xmlsql"  targetProject="./src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+	<!-- 指定 Mapper映射器（dao）文件  路径-->
+    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="top.chao.dao"  targetProject="./src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+	<!-- 指定  数据库的 基本表-->
+    <table tableName="%" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false" selectByExampleQueryId="flase">
+      <property name="useActualColumnNames" value="true"/>
+      <generatedKey column="ID" sqlStatement="mysql" identity="true" />
+    </table>
+
+  </context>
+</generatorConfiguration>
