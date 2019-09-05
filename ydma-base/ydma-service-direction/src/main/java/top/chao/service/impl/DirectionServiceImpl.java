@@ -29,6 +29,11 @@ public class DirectionServiceImpl implements DirectionService {
 	public ResultJson loadAll() {
 		ResultJson result = new ResultJson();
 		List<Direction> list = directionDao.selectAll();
+		if(list.isEmpty()) {
+			result.setCode(ResultEnum.QUERY_EMPTY.getCode());
+			result.setMsg(ResultEnum.QUERY_EMPTY.getMsg());
+			return result;
+		}
 		result.setCode(ResultEnum.QUERY_SUCCESS.getCode());
 		result.setMsg(ResultEnum.QUERY_SUCCESS.getMsg());
 		result.setData(list);

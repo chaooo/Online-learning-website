@@ -88,7 +88,7 @@ public class TestUserController {
 	public void testJWT() throws Exception {
 		//配置参数
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-		params.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjaGFvIiwidWlkIjoyOSwiZXhwIjoxNTY3NjA2MjM2fQ.MpCjpD3nb4P4k08i-eA4lpIFjZTpPyLPBzXzddBIV-c");
+		params.set("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjaGFvIiwidWlkIjoyOSwiZXhwIjoxNTY3NjU2NjU2fQ.xn2c8Yp40GiJ_941nGo9oP2h9h53boteB511GUjIJ-8");
 		String msg = ResultEnum.TOKEN_SUCCESS.getMsg();
 		//测试
 		testHttp("post", "/user/token", params, msg);
