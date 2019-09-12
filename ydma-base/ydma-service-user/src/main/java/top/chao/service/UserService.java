@@ -36,8 +36,27 @@ public interface UserService {
 	
 	/**
 	 * 用户更新资料
+	 * @param token 
 	 * @param user
 	 * @return
 	 */
-	public ResultJson modifyUser(User user);
+	public ResultJson modifyUser(String token, User user);
+
+	/**
+	 * 用户修改密码
+	 * @param token
+	 * @param password
+	 * @param new_password 
+	 * @return
+	 */
+	public ResultJson modifyPassword(String token, String password, String new_password);
+
+	/**
+	 * 登录历史记录
+	 * @param token
+	 * @return
+	 */
+	public ResultJson loadLoginHistory(String token);
+
+
 }

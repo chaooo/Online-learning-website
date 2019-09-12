@@ -7,9 +7,21 @@ public class Direction {
     private String name;
     //存储相关联的subject信息
     private List<Subject> subjects;
+    //存储推荐的课程
+    private List<?> courses;
 
 
-    public List<Subject> getSubjects() {
+    public List<?> getCourses() {
+		return courses;
+	}
+
+
+	public void setCourses(List<?> courses) {
+		this.courses = courses;
+	}
+
+
+	public List<Subject> getSubjects() {
 		return subjects;
 	}
 

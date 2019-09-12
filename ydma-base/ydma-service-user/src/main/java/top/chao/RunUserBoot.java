@@ -10,7 +10,6 @@ public class RunUserBoot {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RunUserBoot.class, args);
-
 	}
 
 }

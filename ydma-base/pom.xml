@@ -22,7 +22,8 @@
   	<module>ydma-cloud-eureka</module>
   	<module>ydma-cloud-hystrix</module>
   	<module>ydma-cloud-zuul</module>
-</modules>
+  	<module>ydma-view-web</module>
+  </modules>
   <dependencies>
   	<dependency>
   		<groupId>org.springframework.boot</groupId>
@@ -60,5 +61,33 @@
   		<artifactId>ydma-base-common</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>com.google.code.gson</groupId>
+  		<artifactId>gson</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-cache</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-starter-data-redis</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>redis.clients</groupId>
+  		<artifactId>jedis</artifactId>
+  	</dependency>
   </dependencies>
+  <build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+		</plugin>
+	</plugins>
+  </build>
 </project>

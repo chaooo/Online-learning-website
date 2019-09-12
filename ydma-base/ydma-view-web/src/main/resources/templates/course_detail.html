@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学习网-程序员的梦工厂</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/css/course_detail.css" type="text/css">
+</head>
+
+<body>
+    <!-- 引入头部文件 -->
+    <header th:include="parts/common::head"></header>
+    <!-- -----------------------    页面主体开始    -->
+    <main id="detailPage">
+        <!-- =============================课程内容===================== -->
+        <div class="courseInfo">
+
+        </div>
+        <!-- =============================章节列表===================== -->
+        <div class="capterList">
+
+
+        </div>
+    </main>
+    <!-- -----------------------    页面主体结束    -->
+    <!-- 引入尾部文件 -->
+    <footer th:include="parts/common::foot"></footer>
+<!-- 引入JS文件 -->
+<script type="text/javascript" src="/lib/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/lib/vue.js"></script>
+<script type="text/javascript">
+var detailPage = new Vue({
+    el: '#detailPage',
+    data: {
+        direction_id: null,
+        subject_id: null,
+        courseList: [],
+
+    },
+    computed: {
+        //第几页
+        page: function() {
+            return this.getUrlParam("page")>1?this.getUrlParam("page"):1;
+        }
+    },
+    methods: {
+        /**
+         * 提取URL参数值
+         * @param  name: URL参数名称
+         * @return URL参数值
+         */
+        getUrlParam: function(name) {
+            //构造一个含有目标参数的正则表达式对象
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", 'i');
+            //匹配目标参数
+            var r = decodeURIComponent(window.location.search).substr(1).match(reg);
+            //返回参数值
+            if (r != null) return (r[2]);
+            return null; 
+        },
+
+    },
+    mounted: function() {
+        var $self = this;
+
+
+
+
+    }
+});
+</script>
+</body>
+</html>

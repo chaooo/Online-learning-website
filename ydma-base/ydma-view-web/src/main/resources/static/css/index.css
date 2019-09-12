@@ -1,0 +1,54 @@
+@charset "UTF-8";
+.banner{margin-top:30px;width:1200px;height:460px;padding-left:220px;box-shadow:0 12px 24px 0 rgba(7,17,27,0.2);border-radius:5px;overflow:hidden;position:relative;}
+
+/* 轮播 */
+#slide{position:relative;width:100%;height:460px;overflow:hidden;}
+#slide .pic{position:relative;z-index:0;}
+#slide .pic img{width:100%;height:460px;display:block;}
+#slide .hd{width:100%;position:absolute;bottom:15px;text-align:right;font-size:0;z-index:1;padding-right:20px;}
+#slide .hd li{margin:0 5px;background-color:#FFF;width:12px;height:12px;overflow:hidden;cursor:pointer;display:inline-block;*display:inline;zoom:1;border-radius:12px;}
+#slide .hd .on{background-color:#666;width:12px;height:12px;position:relative;border-radius:12px;}
+#slide .prev,#slide .next{width:60px;height:90px;margin:-60px 0 0;background:url(../img/ad_ctr.png) no-repeat 0 0;position:absolute;top:50%;z-index:10;cursor:pointer;text-indent:-9999px;filter:alpha(opacity = 20);opacity:0.2;}
+#slide .prev{left:0;}
+#slide .next{background-position:0 -90px;right:0;}
+#slide .prev:hover,#slide .next:hover{filter:alpha(opacity = 60);-moz-opacity:.6;opacity:.6}
+
+/* 课程方向导航 */
+.menuContent{position:absolute;left:0px;top:0px;width:220px;height:460px;z-index:12;padding-top:12px;box-sizing:border-box;background:#2b333b;border-bottom-left-radius:4px;font-weight:400;}
+.menuContent .item{height:60px;line-height:60px;font-size:12px;cursor:pointer;padding-left:12px;}
+.menuContent .item > a{display:block;color:rgba(255,255,255,0.6);padding:0 16px;border-top-left-radius:4px;border-bottom-left-radius:4px;height:60px;transition:all .1s;position:relative;}
+.menuContent .item > a:after{content:'>';position:absolute;right:10px;top:0;color:rgba(255,255,255,0.5);font-size:16px;}
+.menuContent .item.on > a{color:#fff;background-color:rgba(255,255,255,0.3);}
+.menuContent .subMeun a:hover{color:#f01414;}
+.menuContent .submenu{display:none;background:#fff;position:absolute;left:220px;top:0px;width:768px;height:460px;z-index:15;box-shadow:0px 4px 8px 0px rgba(0,0,0,0.1);box-sizing:border-box;}
+.submenu .top{background-color:#fff;padding:12px 48px 32px;position:relative;min-height:150px;}
+.submenu .title{position:relative;height:1px;margin:35px 0 23px 0;background-color:rgba(77,85,93,0.08);}
+.submenu .title span{position:absolute;top:-12px;left:0;padding-right:12px;font-size:14px;font-weight:bold;color:#F20D0D;line-height:24px;background-color:#fff;}
+.submenu .tag a{margin-bottom:16px;font-size:14px;color:#4D555D;line-height:22px;margin-right:24px;display:inline-block;}
+.submenu .btm{width:100%;position:absolute;bottom:0;background:#F8FAFC;padding:36px 0 0px 48px;justify-content:space-between;}
+.submenu .btm .card{width:312px;height:60px;margin-bottom:36px;overflow:hidden;position:relative;}
+.submenu .btm .card img{display:inline-block;width:64px;height:42px;border-radius:4px;background-color:#ccc;}
+.submenu .btm .card .course{position:absolute;top:0;left:80px;width:232px;line-height:20px;}
+.submenu .btm .card .name{font-size:12px;color:#07111B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.submenu .btm .card .info{font-size:12px;color:#9e9e9e;}
+.submenu .btm .card .info em{color:red;}
+
+/* 推荐课程 */
+.courseLine{width:1200px;margin:40px auto;}
+.courseLine .courseTit{height:40px;line-height:40px;margin-bottom:15px;font-size:18px;}
+
+/**科目分类展示*/
+.subjectLine{width:1200px;height:364px;margin:45px auto;}
+.subjectLine .left{width:220px;height:100%;padding:0 15px;background-image:url(../img/subject/Java.png);background-size:100% 100%;}
+.subjectLine .center{height:100%;width:712px;}
+.subjectLine .right{width:220px;height:100%;box-shadow:0 7px 10px 0 rgba(0,0,0,0.2);}
+.subjectLine .left h3{color:#fff;font-size:32px;line-height:40px;text-align:center;padding:20px 0;}
+.subjectLine .left .download{padding:20px 0;text-align:center;}
+.subjectLine .left .download  a{text-align:center;color:red;}
+.subjectLine .left .download  a:hover{text-decoration:underline;}
+.subjectLine .left .intro{line-height:24px;font-size:14px;color:#333;}
+.subjectLine .center .tit{width:100%;height:172px;line-height:172px;color:#FFF;font-size:26px;text-align:center;font-weight:bold;background-image:url(../img/subject/bg.jpg);background-size:100% 100%;box-shadow:0 7px 10px 0 rgba(0,0,0,0.2);margin-bottom:20px;}
+.subjectLine .right .courseCard,.subjectLine .right .courseCard .card{margin:0;border-radius:0;box-shadow:none;}
+.subjectLine .nameList{padding:0 20px;}
+.subjectLine .nameList a{display:inline-block;width:100%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;font-size:14px;line-height:24px;color:#357ea0;}
+.subjectLine .nameList a:first-child{border-top:1px dashed #eee;padding-top:12px;}

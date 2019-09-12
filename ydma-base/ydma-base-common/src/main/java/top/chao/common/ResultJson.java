@@ -1,6 +1,8 @@
 package top.chao.common;
 
-public class ResultJson {
+import java.io.Serializable;
+
+public class ResultJson implements Serializable{
 	private int code;
 	private String msg;
 	private Object data;

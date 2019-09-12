@@ -1,0 +1,72 @@
+@charset "UTF-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;box-sizing:border-box;}
+fieldset,img{border:0}
+:focus{outline:0}
+address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:normal;font-weight:400}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:400}
+abbr,acronym{border:0;font-variant:normal}
+code,kbd,samp,tt{font-size:100%}
+input,button,textarea,select{*font-size:100%;border:0}
+body{background:#fff;color:#5e5e5e;font:14px/2em Microsoft YaHei,SimSun,Arial}
+ol,ul{list-style:none}
+table{border-collapse:collapse;border-spacing:0}
+caption,th{text-align:left}
+sup,sub{font-size:100%;vertical-align:baseline}
+:link,:visited,ins{text-decoration:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+a:link,a:visited{color:#5e5e5e}
+a:hover{color:#c9394a}
+a:active{color:#666}
+.clearfix:after{content:'\0020';display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*zoom:1}
+.l{float:left}
+.r{float:right}
+.clear{height:0;overflow:hidden;clear:both}
+.hide{display:none}
+.btn.hide{display:none}
+a.hidefocus{outline:0}
+button.hidefocus::-moz-focus-inner{border:0}
+a:focus{outline:0;-moz-outline:0}
+input,textarea{outline:0}
+h2{font-size:20px}
+h3{font-size:16px;line-height:32px}
+h5{font-size:14px;line-height:28px}
+html,body{width:100%;height:100%;}
+.flex{display:flex;}
+[v-cloak]{display:none;}
+.fl{float:left;}
+.fr{float:right;}
+.clearfix:after{content:'';display:table;clear:both;}
+.flex{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;}
+.flexBetween{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-box-pack:justify;-moz-box-pack:justify;-ms-flex-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;}
+.flexAround{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-box-pack:justify;-moz-box-pack:justify;-ms-flex-pack:distribute;-webkit-justify-content:space-around;justify-content:space-around;}
+.flexCenter{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-box-pack:center;-moz-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;}
+.flexItem{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;}
+
+/* 头部header,底部footer */
+header{background:#fff;box-shadow:0 4px 8px 0 rgba(7,17,27,0.1);}
+header .head{height:72px;line-height:72px;font-size:16px;width:1200px;margin:0 auto;position:relative;}
+header .nav-item a{padding:0 15px;}
+header .search{padding-top:12px;margin-left:15px;border-bottom:1px solid #6C6C6C;height:46px;line-height:46px;}
+header .search input{text-indent:15px;background: transparent; border: none;}
+header .search img{vertical-align:middle;}
+header .search:hover,header .search.active{border-bottom-color:#f01414;}
+header .sign a{margin:0 2px;padding:0 10px;}
+main{width:1200px;min-height:calc(100% - 232px);margin:0 auto;}
+footer{margin-top:20px;height:120px;padding-top:20px;text-align:center;line-height:50px;background:#fff;font-size:14px;box-shadow:0 -4px 8px 0 rgba(7,17,27,0.1);}
+footer .foot{width:1200px;margin:0 auto;}
+footer .link{border-bottom:1px solid #6C6C6C;}
+footer .link a{padding:0 20px;}
+footer .link a:hover{text-decoration:underline;}
+
+/* 课程card */
+.courseCard{width: calc(100% + 25px);margin-left:-25px;}
+.courseCard .card{position:relative;width:220px;height:172px;margin-left:25px;overflow:hidden;background:#fff;box-shadow:0 7px 10px 0 rgba(0,0,0,0.2);border-radius:5px;}
+.courseCard .card img{display:inline-block;width:100%;height:124px;background-color:#ccc;}
+.courseCard .card .fade{position:absolute;padding:0 20px;height:80px;transition:height .5s;bottom:0;width:100%;background:#ffffffe0;font-size:12px;line-height:16px;overflow:hidden;color:#93999f;}
+.courseCard .card:hover .fade{height:140px;transition:height .5s;}
+.courseCard .card .fade .btm{position:absolute;margin-left:-20px;padding:0 20px;bottom:0;width:100%;line-height:46px;height:46px;background:#fff;}
+.courseCard .card .fade i{color:red;font-style:normal;}
+.courseCard .card .fade em{font-weight:bold;}
+.courseCard .card .fade .name{padding-top:10px;font-size:14px;line-height:24px;color:#333;}

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学习网-程序员的梦工厂</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/css/index.css" type="text/css">
+</head>
+<body>
+    <!-- 引入头部文件 -->
+    <header th:include="parts/common::head"></header>
+    <!-- -----------------------    页面主体开始    -->
+    <main id="indexPage">
+        <div class="banner">
+            <!-- ==================================轮播图============================ -->
+            <div id="slide">
+                <ul class="pic">
+                    <li>
+                        <a href="/course/list?direction_id=2"><img src="/img/slide/index1.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="/course/list?direction_id=2"><img src="/img/slide/index2.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="/course/list?direction_id=2"><img src="/img/slide/index3.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="/course/list?direction_id=2"><img src="/img/slide/index4.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="/course/list?direction_id=2"><img src="/img/slide/index5.jpg" /></a>
+                    </li>
+                </ul>
+                <a class="prev" href="javascript:void(0)"></a>
+                <a class="next" href="javascript:void(0)"></a>
+                <ul class="hd">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <!-- ================================课程方向导航=========================== -->
+            <div class="menuContent" v-on:mouseout="menuMouseout($event)">
+                <div class="item"  v-for="direction in courseDirection" v-bind:did="direction.id" v-on:mouseover="itemMouseover($event)">
+                    <a href="javascript:void(0)" v-text="direction.name">课程方向</a>
+                    <div class="submenu">
+                        <div class="top">
+                            <div class="tag-box">
+                                <div class="title"><span v-text="direction.name">课程学科</span></div>
+                                <div class="tag">
+                                    <a v-for="subject in direction.subjects" target="_blank" v-bind:href="'/course/list?subject_id='+subject.id" v-text="subject.name">学科名</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btm flex">
+                            <div class="card" v-if="direction.courses&&direction.courses.length>0" v-for="course in direction.courses">
+                                <a href="">
+                                    <img v-bind:src="'/img/course/'+course.image" alt="">
+                                    <div class="course">
+                                        <p class="name" v-text="course.name">推荐课程名</p>
+                                        <p class="info"><em v-text="course.learn_count">666</em>人在学</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =============================推荐课程===================== -->
+        <div class="courseLine">
+            <div class="courseTit">课程推荐</div>
+            <div class="courseCard flex">
+                <div class="card" v-for="course in recomendCourses" v-bind:cid="course.id">
+                    <img v-bind:src="'/img/course/'+course.image" alt="">
+                    <div class="fade">
+                        <p class="name" v-text="course.name">课程名</p>
+                        <p class="info" v-text="course.intro">课程描述</p>
+                        <p class="btm flexBetween">
+                            <span><i v-text="'￥'+course.price"></i></span>
+                            <span><em v-text="course.learn_count">555</em>人在学</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =============================免费课程===================== -->
+        <div class="courseLine">
+            <div class="courseTit">免费课程</div>
+            <div class="courseCard flex">
+                <div class="card" v-for="course in freeCourses" v-bind:cid="course.id">
+                    <img v-bind:src="'/img/course/'+course.image" alt="">
+                    <div class="fade">
+                        <p class="name" v-text="course.name">课程名</p>
+                        <p class="info" v-text="course.intro">课程描述</p>
+                        <p class="btm flexBetween">
+                            <span><i v-text="'￥'+course.price"></i></span>
+                            <span><em v-text="course.learn_count">555</em>人在学</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =============================Web前端课程===================== -->
+        <div class="subjectLine flexBetween">
+            <div class="left">
+                <h3>Web<br>前端课程</h3>
+                <div class="download">
+                    <a href="/download/HTML5.CHM">API 下载 &gt;</a>
+                </div>
+                <div class="intro">
+                    Java是由Sun公司于1995年5月推出的Java面向对象程序设计语言和Java平台的总称。
+                </div>
+            </div>
+            <div class="center">
+                <div class="tit">不忘初心  方得始终</div>
+                <div class="courseCard flex">
+                    <div class="card" v-for="course in htmlCourses" v-bind:cid="course.id">
+                        <img v-bind:src="'/img/course/'+course.image" alt="">
+                        <div class="fade">
+                            <p class="name" v-text="course.name">课程名</p>
+                            <p class="info" v-text="course.intro">课程描述</p>
+                            <p class="btm flexBetween">
+                                <span><i v-text="'￥'+course.price"></i></span>
+                                <span><em v-text="course.learn_count">555</em>人在学</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="courseCard">
+                    <div class="card" v-if="scoreHtmlCourses&&scoreHtmlCourses.length>0">
+                        <img v-bind:src="'/img/course/'+scoreHtmlCourses[0].image" alt="">
+                        <div class="fade">
+                            <p class="name" v-text="scoreHtmlCourses[0].name">课程名</p>
+                            <p class="info" v-text="scoreHtmlCourses[0].intro">课程描述</p>
+                            <p class="btm flexBetween">
+                                <span>课程评分：<i v-text="scoreHtmlCourses[0].score">10</i></span>
+                                <span><em v-text="scoreHtmlCourses[0].learn_count">555</em>人在学</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="nameList">
+                        <a v-for="(course,index) in scoreHtmlCourses" v-if="index>0" href="" v-text="course.name">课程名</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =============================Java开发课程===================== -->
+        <div class="subjectLine flexBetween">
+            <div class="left">
+                <h3>Java<br>开发课程</h3>
+                <div class="download">
+                    <a href="/download/JDK_API_1_6_zh_CN.CHM">API 下载 &gt;</a>
+                </div>
+                <div class="intro">
+                    Java是由Sun公司于1995年5月推出的Java面向对象程序设计语言和Java平台的总称。
+                </div>
+            </div>
+            <div class="center">
+                <div class="tit">不忘初心  方得始终</div>
+                <div class="courseCard flex">
+                    <div class="card" v-for="course in javaCourses" v-bind:cid="course.id">
+                        <img v-bind:src="'/img/course/'+course.image" alt="">
+                        <div class="fade">
+                            <p class="name" v-text="course.name">课程名</p>
+                            <p class="info" v-text="course.intro">课程描述</p>
+                            <p class="btm flexBetween">
+                                <span><i v-text="'￥'+course.price"></i></span>
+                                <span><em v-text="course.learn_count">555</em>人在学</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="courseCard">
+                    <div class="card" v-if="scoreJavaCourses&&scoreJavaCourses.length>0">
+                        <img v-bind:src="'/img/course/'+scoreJavaCourses[0].image" alt="">
+                        <div class="fade">
+                            <p class="name" v-text="scoreJavaCourses[0].name">课程名</p>
+                            <p class="info" v-text="scoreJavaCourses[0].intro">课程描述</p>
+                            <p class="btm flexBetween">
+                                <span>课程评分：<i v-text="scoreJavaCourses[0].score">10</i></span>
+                                <span><em v-text="scoreJavaCourses[0].learn_count">555</em>人在学</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="nameList">
+                        <a v-for="(course,index) in scoreJavaCourses" v-if="index>0" href="" v-text="course.name">课程名</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =============================DBMS数据库管理系统===================== -->
+        <div class="subjectLine flexBetween">
+            <div class="left">
+                <h3>DBMS<br>数据库课程</h3>
+                <div class="download">
+                    <a href="/download/JDK_API_1_6_zh_CN.CHM">API 下载 &gt;</a>
+                </div>
+                <div class="intro">
+                    Java是由Sun公司于1995年5月推出的Java面向对象程序设计语言和Java平台的总称。
+                </div>
+            </div>
+            <div class="center">
+                <div class="tit">不忘初心  方得始终</div>
+                <div class="courseCard flex">
+                    <div class="card" v-for="course in oracleCourses" v-bind:cid="course.id">
+                        <img v-bind:src="'/img/course/'+course.image" alt="">
+                        <div class="fade">
+                            <p class="name" v-text="course.name">课程名</p>
+                            <p class="info" v-text="course.intro">课程描述</p>
+                            <p class="btm flexBetween">
+                                <span><i v-text="'￥'+course.price"></i></span>
+                                <span><em v-text="course.learn_count">555</em>人在学</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="courseCard">
+                    <div class="card" v-if="scoreOracleCourses&&scoreOracleCourses.length>0">
+                        <img v-bind:src="'/img/course/'+scoreOracleCourses[0].image" alt="">
+                        <div class="fade">
+                            <p class="name" v-text="scoreOracleCourses[0].name">课程名</p>
+                            <p class="info" v-text="scoreOracleCourses[0].intro">课程描述</p>
+                            <p class="btm flexBetween">
+                                <span>课程评分：<i v-text="scoreOracleCourses[0].score">10</i></span>
+                                <span><em v-text="scoreOracleCourses[0].learn_count">555</em>人在学</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="nameList">
+                        <a v-for="(course,index) in scoreOracleCourses" v-if="index>0" href="" v-text="course.name">课程名</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- -----------------------    页面主体结束    -->
+    <!-- 引入尾部文件 -->
+    <footer th:include="parts/common::foot"></footer>
+    <!-- 引入JS文件 -->
+<script type="text/javascript" src="/lib/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/lib/jquery.SuperSlide.2.1.3.js"></script>
+<script type="text/javascript" src="/lib/vue.js"></script>
+<script type="text/javascript">
+ var indexPage = new Vue({
+    el: '#indexPage',
+    data: {
+        courseDirection: [],
+        recomendCourses: [],//课程推荐
+        freeCourses: [],//免费课程
+        htmlCourses: [],//html课程
+        javaCourses: [],//java课程
+        oracleCourses:[],//Oracle课程
+        scoreHtmlCourses: [],//html课程评分列表
+        scoreJavaCourses: [],//Java课程评分列表
+        scoreOracleCourses: [],//Oracle课程评分列表
+    },
+    computed: {
+        //
+        test: function(){
+            return "";
+        },
+    },
+    methods: {
+        //加载课程方向
+        loadDirection: function () {
+            var $self = this;
+            $.ajax({
+                url:"http://localhost:7002/direction/all",
+                type:"GET",
+            }).done(function(res){
+                if(res.code==0 && res.data!=null){
+                    $self.courseDirection = res.data;
+                }
+            });
+        },
+        //加载课程推荐
+        loadRecomendCourse: function () {
+            var $self = this;
+            $.get("http://localhost:7001/course/recommend").done(function(res){
+                if(res.code==0 && res.data!=null){
+                    $self.recomendCourses = res.data.list;
+                }
+            });
+        },
+        //加载免费课程
+        loadFreeCourse: function () {
+            var $self = this;
+            $.get("http://localhost:7001/course/free").done(function(res){
+                if(res.code==0 && res.data!=null){
+                    $self.freeCourses = res.data.list;
+                }
+            });
+        },
+        //加载 根据科目ID查找课程
+        loadCourseBySubject: function (sid, size, page) {
+            var $self = this;
+            $.get("http://localhost:7001/course/subject",{
+                subject_id: sid,
+                size: size?size:4,
+                page: page?page:1
+            }).done(function(res){
+                if(res.code==0 && res.data!=null){
+                    if(sid==1){
+                        $self.htmlCourses = res.data.list;
+                    }else if(sid==14){
+                        $self.javaCourses = res.data.list;
+                    }else if(sid==27){
+                        $self.oracleCourses = res.data.list;
+                    }
+                }
+            });
+        },
+        //加载评分排序课程
+        loadScoreCourse: function (sid) {
+            var $self = this;
+            $.get("http://localhost:7001/course/score",{subject_id: sid}).done(function(res){
+                if(res.code==0 && res.data!=null){
+                    if(sid==1){
+                        $self.scoreHtmlCourses = res.data.list;
+                    }else if(sid==14){
+                        $self.scoreJavaCourses = res.data.list;
+                    }else if(sid==27){
+                        $self.scoreOracleCourses = res.data.list;
+                    }
+                }
+            });
+        },
+
+
+
+        //课程方向鼠标悬浮效果
+        itemMouseover: function (event) {
+            var el = event.currentTarget;
+            $(el).addClass("on").find(".submenu").show();
+        },
+        menuMouseout: function (event) {
+            var el = event.currentTarget;
+            $(el).find(".item").removeClass("on").find(".submenu").hide();
+        },
+    },
+    mounted: function () {
+        var $self = this;
+        //加载课程方向
+        $self.loadDirection();
+        //加载课程推荐
+        $self.loadRecomendCourse();
+        //加载免费课程
+        $self.loadFreeCourse();
+        //加载前端课程subject_id,size
+        $self.loadCourseBySubject(1,3);
+        //加载java课程subject_id,size
+        $self.loadCourseBySubject(14,3);
+        //加载Oracle课程subject_id,size
+        $self.loadCourseBySubject(27,4);
+        //加载html评分排序课程
+        $self.loadScoreCourse(1);
+        //加载java评分排序课程
+        $self.loadScoreCourse(14);
+        //加载oracle评分排序课程
+        $self.loadScoreCourse(27);
+
+        //加载轮播图
+        $("#slide").slide({
+            mainCell: ".pic",
+            effect: "left",
+            autoPlay: true,
+            delayTime: 500
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+});
+</script>
+</body>
+</html>

@@ -28,8 +28,7 @@ public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
     /**
-     * 通过User对象 插入一条数据到user表
-     * @param record
+     * 通过User对象 插入一条数据到user表 @param record
      * @return
      */
     @Insert({
@@ -48,8 +47,7 @@ public interface UserMapper {
     int insert(User record);
 
     /**
-     * 通过User对象 插入一条数据(含缺省值)到user表
-     * @param record
+     * 通过User对象 插入一条数据(含缺省值)到user表 @param record
      * @return
      */
     @InsertProvider(type=UserSqlProvider.class, method="insertSelective")
@@ -57,8 +55,7 @@ public interface UserMapper {
     int insertSelective(User record);
 
     /**
-     * 通过主键ID 查找user表中一条数据
-     * @param id
+     * 通过主键ID 查找user表中一条数据 @param id
      * @return
      */
     @Select({
@@ -84,8 +81,7 @@ public interface UserMapper {
     User selectByPrimaryKey(Integer id);
 
     /**
-     * 通过name 查找user表中一条数据
-     * @param name
+     * 通过name 查找user表中一条数据 @param name
      * @return
      */
     @Select({
@@ -98,16 +94,14 @@ public interface UserMapper {
     User selectByName(String name);
 
     /**
-     * 通过主键ID 更新一条数据(含缺省值)到user表
-     * @param record
+     * 通过主键ID 更新一条数据(含缺省值)到user表 @param record
      * @return
      */
     @UpdateProvider(type=UserSqlProvider.class, method="updateByPrimaryKeySelective")
     int updateByPrimaryKeySelective(User record);
 
     /**
-     * 通过主键ID 更新一条数据到user表
-     * @param record
+     * 通过主键ID 更新一条数据到user表 @param record
      * @return
      */
     @Update({

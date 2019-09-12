@@ -74,7 +74,7 @@ public class JwtUtil {
 	}
 	
 	/**
-	 *从token解析出uid信息
+	 *从token解析出uid信息,用户ID
 	 * @param token
 	 * @param key
 	 * @return
@@ -85,7 +85,7 @@ public class JwtUtil {
 	}
 	
 	/**
-	 *从token解析出aud信息
+	 *从token解析出aud信息,用户名
 	 * @param token
 	 * @param key
 	 * @return

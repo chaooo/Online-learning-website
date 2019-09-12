@@ -1,13 +1,16 @@
 package top.chao.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import top.chao.common.ResultEnum;
 import top.chao.common.ResultJson;
+import top.chao.dao.LoginHistoryMapper;
 import top.chao.dao.UserMapper;
+import top.chao.entity.LoginHistory;
 import top.chao.entity.User;
 import top.chao.service.UserService;
 import top.chao.util.JwtUtil;
@@ -20,6 +23,8 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Autowired
 	private UserMapper userDao;
+	@Autowired
+	private LoginHistoryMapper loginHistoryDao;
 	
 	/**
 	 * 根据id查找用户
@@ -134,9 +139,84 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 	@Override
-	public ResultJson modifyUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultJson modifyUser(String token, User user) {
+		//先检查token，若Token令牌错误，返回
+		ResultJson result = checkToken(token);
+		if(result.getCode()!=0) return result;
+		//根据token得到用户id,并查出用户数据
+		int user_id = JwtUtil.parseTokenUid(token);
+		user.setId(user_id);
+		int rows = userDao.updateByPrimaryKeySelective(user);
+		if(rows>0) {
+			result.setCode(ResultEnum.UPDATE_SUCCESS.getCode());
+			result.setMsg(ResultEnum.UPDATE_SUCCESS.getMsg());
+			return result;
+		}
+		result.setCode(ResultEnum.UPDATE_ERROR.getCode());
+		result.setMsg(ResultEnum.UPDATE_ERROR.getMsg());
+		return result;
 	}
+	
+	/**
+	 * 用户修改密码
+	 * @param password
+	 * @param new_password
+	 * @return
+	 */
+	@Override
+	public ResultJson modifyPassword(String token, String password, String new_password) {
+		//先检查token，若Token令牌错误，返回
+		ResultJson result = checkToken(token);
+		if(result.getCode()!=0) return result;
+		//根据id查找用户
+		int user_id = JwtUtil.parseTokenUid(token);
+		User user = userDao.selectByPrimaryKey(user_id);
+		//判断旧密码是否输入正确
+		String old_password = user.getPassword();
+		if(password.equals(old_password)) {
+			result.setCode(ResultEnum.OLD_PASSWORD_ERROR.getCode());
+			result.setMsg(ResultEnum.OLD_PASSWORD_ERROR.getMsg());
+			return result;
+		}
+		//新密码加密后再保存
+		String salt = MD5Util.salt();
+		String md5Password = MD5Util.md5(new_password+salt);
+		user.setPassword(md5Password);
+		user.setSalt(salt);
+		//更新到数据库
+		int rows = userDao.updateByPrimaryKeySelective(user);
+		if(rows>0) {
+			result.setCode(ResultEnum.MODIFY_SUCCESS.getCode());
+			result.setMsg(ResultEnum.MODIFY_SUCCESS.getMsg());
+			return result;
+		}
+		result.setCode(ResultEnum.MODIFY_ERROR.getCode());
+		result.setMsg(ResultEnum.MODIFY_ERROR.getMsg());
+		return result;
+	}
+	
+	/**
+	 * 登录历史记录
+	 */
+	@Override
+	public ResultJson loadLoginHistory(String token) {
+		int user_id = JwtUtil.parseTokenUid(token);
+		
+		System.out.println(user_id);
+		
+		List<LoginHistory> list = loginHistoryDao.selectByUserId(user_id);
+		ResultJson result = new ResultJson();
+		if(list.isEmpty()) {
+			result.setCode(ResultEnum.QUERY_ERROR.getCode());
+			result.setMsg(ResultEnum.QUERY_ERROR.getMsg());	
+			return result;
+		}
+		result.setData(list);
+		result.setCode(ResultEnum.QUERY_SUCCESS.getCode());
+		result.setMsg(ResultEnum.QUERY_SUCCESS.getMsg());
+		return result;
+	}
+	
+
 
 }
