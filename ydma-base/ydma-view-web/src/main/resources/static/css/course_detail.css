@@ -2,3 +2,90 @@
 header,footer{background:#07111b;color:#717A84;}
 header input{color:#fff;}
 main{width:100%;}
+.autowrap{word-wrap:break-word;word-break:break-all;}
+.clearfix:after{display:table;content:'';clear:both;}
+.clearfix .l{float:left;}
+.clearfix .r{float:right;}
+
+/* 课程头部info */
+.courseInfo{width:100%;background:#273857;}
+.courseInfo .wrap{width:1200px;height:200px;margin:0 auto;position:relative;}
+.courseInfo .path{padding-top:16px;padding-bottom:24px;line-height:24px;font-size:12px;color:rgba(255,255,255,.5);opacity:1;}
+.courseInfo .path a{color:rgba(255,255,255,.5);margin:0 8px;}
+.courseInfo .path a:hover{color:#fff;}
+.courseInfo h2{margin-bottom:8px;line-height:48px;font-size:32px;color:#fff;}
+.courseInfo .statics{color:#fff;font-size:0;position:relative;z-index:3;margin-right:320px;}
+.courseInfo .statics .item{display:inline-block;position:relative;margin-right:16px;font-size:12px;top:15px;}
+.courseInfo .statics .item:after{margin-left:16px;content:"·"}
+.courseInfo .statics .item:last-child:after{display:none}
+.courseInfo .statics .item .k{padding-right:8px;line-height:12px;font-size:12px;font-weight:700}
+.courseInfo .extra{position:absolute;right:0;top:24px;z-index:1}
+.courseInfo .extra .share{display:inline-block;float:none;cursor:pointer;padding:0;line-height:normal;margin:0 12px;width:auto;height:auto;vertical-align:middle;background-image:none;font-size:24px;background-repeat:no-repeat;color:rgba(255,255,255,.6)}
+.courseInfo .extra .share span{margin-top:2px;margin-left:5px;font-size:12px;line-height:24px;float:right}
+.courseInfo .extra .share:hover{color:#fff}
+.courseMenu{height:68px;line-height:68px;background:#fff;box-shadow:0 4px 8px 0 rgba(28,31,33,.1);position:relative}
+.courseMenu .menu{width:1200px;margin:0 auto;}
+.courseMenu .menu li{float:left;text-align:center;position:relative}
+.courseMenu .menu li span{position:absolute;font-size:12px;font-weight:200;color:#9199a1;line-height:18px;top:10px;left:64px}
+.courseMenu .menu a{display:inline-block;padding:0 16px;font-size:16px;color:#1c1f21;line-height:37px;font-weight:bold;margin-right:80px;padding:0}
+.courseMenu .menu a.active{position:relative;color:#f20d0d;cursor:default;}
+
+/* 学习进度 */
+.courseRate{margin-bottom:32px;min-height:150px;padding:24px 32px 32px;background:#fff;box-shadow:0 8px 16px 0 rgba(7,17,27,.1);border-radius:12px;position:relative;z-index:9;margin-top:-150px;}
+.courseRate .info{text-align:right;font-size:12px;line-height:18px}
+.courseRate .info span{float:left;font-weight:700;font-size:16px;line-height:24px}
+.courseRate .media{margin-bottom:12px;font-size:12px;color:#545c63;line-height:18px}
+.courseRate .tip{padding-top:24px}
+.courseRate .tip dl.first{margin-bottom:24px}
+.courseRate .tip dt{margin-bottom:6px;font-weight:700;font-size:14px}
+.courseRate .tip dd{font-size:12px;line-height:24px;color:#545c63;white-space:pre-line}
+.courseRate .progress{margin:9px 0 24px;width:100%;height:16px;background:rgba(28,31,33,.1);border-radius:8px;font-size:0;}
+.courseRate .progress ins{height:16px;content:"";width:0%;transition:2s width;background:#f20d0d;border-radius:8px}
+.courseRate .learn a{display:block}
+.courseRate .learn .btn{cursor:pointer;transition:all .3s;background-color:#f20d0d;opacity:1;padding:11px 32px;font-size:16px;line-height:24px;border-radius:24px;text-align:center;color:#fff;}
+
+/* 主体 */
+.courseContent{width:1200px;margin:0 auto;margin-bottom:40px;}
+.courseContent .content{width:800px;padding-top:36px;}
+.courseContent .aside{width:320px;}
+.courseContent .content .bar{position:relative;margin-bottom:30px}
+.courseContent .content .bar .btn{padding:4px 12px;font-size:12px;color:#1c1f21;line-height:16px;border-radius:12px;cursor:pointer;background:#f8fafc;margin-right:12px;}
+.courseContent .content .bar .btn:hover{color:#545c63;background:rgba(145,153,161,0.2);}
+.courseContent .content .bar .btn.active,.courseContent .content .bar .btn.active:hover{color:#FFFFFF;background:#9199a1;cursor:default;}
+.courseContent .content .bar .sub{position:absolute;right:0;top:-7px;padding:7px 16px;font-size:14px;line-height:1.42857143;border-radius:18px;color:#545c63;background-color:rgba(84,92,99,0.1);}
+.courseContent .content .bar .chk{position:absolute;right:0;top:-7px;color:#787d82;font-size:12px}
+.courseContent .content .bar .switch{float:left;position:relative;width:40px;height:20px;margin-right:12px}
+.courseContent .content .bar .switch.on .round{left:20px;border-color:#00b43c}
+.courseContent .content .bar .switch.on .line{background-color:rgba(0,180,60,.2)}
+.courseContent .content .bar .line{width:40px;height:6px;margin-top:8px;background-color:#d0d6d9;border-radius:10px;position:absolute;z-index:0}
+.courseContent .content .bar .round{width:20px;height:20px;border-radius:50%;border:2px solid #b4bbbf;position:absolute;background-color:#fff;cursor:pointer;transition:all .3s;top:0;left:0;z-index:1;-webkit-box-sizing:border-box;box-sizing:border-box}
+
+/* 章节列表 */
+.capterList .chapter{margin-bottom:8px;padding:24px 32px 32px;background:#fff;box-shadow:0 8px 16px 0 rgba(7,17,27,.1);border-radius:12px}
+.capterList .chapter h3{color:#1c1f21;font-size:16px;font-weight:700;line-height:24px}
+.capterList .chapter .description{margin-top:2px;font-size:12px;color:#545c63;line-height:18px}
+.capterList .chapter .video{padding-top:16px}
+.capterList .chapter .video li:first-child a button{position:relative;right:-12px}
+.capterList .chapter .video li{position:relative;padding-left:12px;height:48px;line-height:48px;list-style:none}
+.capterList .chapter .video li:hover{background:rgba(242,13,13,.05);border-radius:4px;color:#f20d0d}
+.capterList .chapter .video li:hover .laststudy{color:#f20d0d}
+.capterList .chapter .video li:last-child{border:none}
+.capterList .chapter .video li .ing{position:absolute;right:12px;top:50%;margin-top:-9px;font-size:16px;color:#00b43c}
+.capterList .chapter .video li .done{position:absolute;right:12px;top:50%;margin-top:-9px;font-size:16px;color:#00b43c}
+.capterList .chapter .video li .start{position:absolute;right:12px;top:50%;margin-top:-9px;font-size:16px;color:#d9dde1}
+.capterList .chapter .video li a{color:#1c1f21;display:block;overflow:hidden;word-break:break-all}
+.capterList .chapter .video li a .type{font-size:24px;color:#9199a1;line-height:24px;position:relative;top:3px;margin-right:4px}
+.capterList .chapter .video li a .preview-btn{display:none;margin:12px;height:24px;padding:0 12px;font-size:12px}
+.capterList .chapter .video li a:hover{color:#f20d0d}
+.capterList .chapter .video li a:hover i{color:#f20d0d}
+.capterList .chapter .video li a:hover .preview-btn{display:block}
+.capterList .chapter .video li a.practise,.capterList .chapter .video li a.programme,.capterList .chapter .video li a.studyvideo{background:url(/static/img/learnicon.png?v3.1) no-repeat 0 -121px}
+.capterList .chapter .video li a.practise{background-position:0 -157px}
+.capterList .chapter .video li a.programme{background-position:0 -194px}
+.capterList .chapter em{float:right;font-size:12px;cursor:default}
+.capterList .chapter .laststudy,.capterList .chapter .new{color:#93999f;font-size:12px;position:absolute;right:35px;top:0}
+.capterList .chapter.unlearn h3{color:#b5b9bc;cursor:default}
+
+
+
+

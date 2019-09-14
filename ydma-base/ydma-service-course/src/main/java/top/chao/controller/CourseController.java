@@ -40,8 +40,9 @@ public class CourseController{
 	public ResultJson loadCourseBySubjectId(
 		@RequestParam(name="page",required=false,defaultValue="1")int page,
 		@RequestParam(name="size",required=false,defaultValue="4")int size,
+		@RequestParam(name="type",required=false,defaultValue="")String type,
 		@RequestParam("subject_id")int subject_id) {
-		return courseService.loadCourseBySubjectId(page, size, subject_id);
+		return courseService.loadCourseBySubjectId(page, size, type, subject_id);
 	}
 	
 	/**
@@ -55,9 +56,11 @@ public class CourseController{
 	public ResultJson loadCourseByDirectionId(
 		@RequestParam(name="page",required=false,defaultValue="1")int page,
 		@RequestParam(name="size",required=false,defaultValue="4")int size,
+		@RequestParam(name="type",required=false,defaultValue="")String type,
 		@RequestParam("direction_id")int direction_id) {
-		return courseService.loadCourseByDirectionId(page, size, direction_id);
+		return courseService.loadCourseByDirectionId(page, size, type, direction_id);
 	}
+	
 	/**
 	 * 课程推荐查询
 	 * @param page

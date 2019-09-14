@@ -72,6 +72,11 @@ public interface IssueMapper {
     })
     Issue selectByPrimaryKey(Integer id);
     
+    /**
+     * 根据提问ID查询用户ID
+     * @param id
+     * @return
+     */
     @Select({
         "select",
         "user_id",

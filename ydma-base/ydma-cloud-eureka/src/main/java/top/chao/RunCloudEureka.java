@@ -3,12 +3,14 @@ package top.chao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-public class RunEurekaBoot {
+@EnableEurekaServer
+public class RunCloudEureka {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RunEurekaBoot.class, args);
+		SpringApplication.run(RunCloudEureka.class, args);
 
 	}
 

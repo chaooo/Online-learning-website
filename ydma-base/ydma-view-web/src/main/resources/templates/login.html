@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学习网-程序员的梦工厂</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/css/login.css" type="text/css">
+</head>
+<body>
+<!-- 引入头部文件 -->
+<header th:include="parts/common::head"></header>
+
+<main id="userLogin">
+    <div class="login">
+        <div class="type clearfix">
+            <a v-bind:class="{'active':loginType==1}" href="javascript:;" @click="swithType(1)">登录</a>
+            <a v-bind:class="{'active':loginType==2}" href="javascript:;" @click="swithType(2)">注册</a>
+        </div>
+        <div class="inputBox">
+            <input type="text" @blur="blurHandle($event)" v-model="loginData.name" autocomplete="off" maxlength="50" rule="(^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$)|(^\d{6,12}$)" placeholder="邮箱地址/手机号码" errortxt="请提供正确的邮箱/手机号码" needverify>
+            <p class="err"><span>请提供正确的邮箱/手机号码</span></p>
+        </div>
+        <div class="inputBox">
+            <input @blur="blurHandle($event)" v-model="loginData.password" type="password" autocomplete="off" maxlength="30" placeholder="密码" rule="^[^\u4e00-\u9fa5]{6,30}$" errortxt="6-30位数字或字母或字符" needverify>
+            <p class="err"><span>6-30位数字或字母或字符</span></p>
+        </div>
+        <div class="forget" v-if="loginType==1">
+            <a href="user/forget">忘记密码？</a>
+        </div>
+        <div class="toLogin">
+            <span class="loding" v-if="loginLoading"><img src="/img/loadingsmall.gif"></span>
+            <input v-else @click="loginSubmit()" type="button" v-bind:value="loginType==1?'登  入':'注  册'">
+        </div>
+    </div>
+</main>
+
+<!-- 引入尾部文件 -->
+<footer th:include="parts/common::foot"></footer>
+<!-- 引入JS文件 -->
+<script type="text/javascript" src="/lib/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/lib/vue.js"></script>
+<script type="text/javascript">
+function setErrorTxt(obj, txt) {
+    $(obj).parent().addClass("error").find(".err").addClass("show").find("span").html(txt);
+}
+function clearErrorTxt(obj) {
+    $(obj).parent().removeClass("error").find(".err").removeClass("show");
+}
+;var UserLogin = new Vue({
+    el: '#userLogin',
+    data: {
+        loginLoading: false,
+        loginType: 1,//1:登录， 2:注册
+        loginData: {
+            name: '',
+            password: ''
+        }
+    },
+    computed: {
+    },
+    methods: {
+        /**
+         * 提取URL参数值
+         * @param  name: URL参数名称
+         * @return URL参数值
+         */
+        getUrlParam: function(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", 'i');
+            var r = decodeURIComponent(window.location.search).substr(1).match(reg);
+            if (r != null) return (r[2]);
+            return null; 
+        },
+        swithType: function(type){
+            this.loginType = type*1;
+        },
+        blurHandle: function (event, other) {
+            var $self = this;
+            if (other) {var el = other;} else {var el = event.currentTarget;}
+            if ($(el).is(":hidden")) { return; }
+            var v = $.trim($(el).val()).replace(/\s+/g,"");
+            var reg = $(el).attr("rule");
+            if ($.trim(v) == "") {
+                var errortxt = $(el).attr("placeholder")?$(el).attr("placeholder").split("（")[0] + '不能为空':'';
+                setErrorTxt(el, errortxt);
+                return;
+            }else if (typeof reg != "undefined") {
+                reg = new RegExp(reg);
+                var errortxt = $(el).attr("errortxt");
+                if (!reg.test(v)) {
+                    setErrorTxt(el, errortxt);
+                    return;
+                }
+            }
+            clearErrorTxt(el);
+        },
+        // 验证表单
+        verifyPostdata: function () {
+            var $self = this;
+            $("[needverify]:visible").each(function (index, ele) {
+                if (!$(ele).next().hasClass("show")) {
+                    $self.blurHandle(null, ele);
+                }
+            });
+            var len = $(".err.show:visible").length;
+            if (len != 0) { 
+                    return false; 
+            }else{
+                    return true;
+            }
+        },
+        // 提交
+        loginSubmit: function () {
+            if (this.loginLoading) return;
+            var $self = this;
+            var pass = this.verifyPostdata();
+            this.$nextTick(function () {
+                if (!pass)  return;
+                $self.loginLoading = true;
+                var url = "http://localhost:7006/user";
+                if($self.loginType==2){
+                	url += "/regist";
+                }else{
+                	url += "/login";
+                }
+                $.post(url, $self.loginData).done(function(){
+                        $self.loginLoading = false;
+                        if(result.code==0){
+                            localStorage.setItem("token", result.data);
+                            window.location.href = "/index"
+                        }else{
+                            alert(result.msg);
+                        }
+                }).fail(function(){
+                    $self.loginLoading = false;
+                    alert("登录失败，请稍后重试！");
+                })
+            });
+        },
+
+    },
+    mounted: function () {
+        $("header .sign").hide();
+        this.loginType = this.getUrlParam("type")==2?2:1;
+        var $self = this;
+
+
+
+
+    }
+});
+</script>
+</body>
+</html>

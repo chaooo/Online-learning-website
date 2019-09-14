@@ -85,10 +85,10 @@ public class CourseServiceImpl implements CourseService{
      * @return
      */
 	@Override
-	@Cacheable(value="course",key="#root.methodName+'['+#page+','+#size+','+#subject_id+']'")
-	public ResultJson loadCourseBySubjectId(int page, int size, int subject_id) {
+	@Cacheable(value="course",key="#root.methodName+'['+#page+','+#size+','+#type+','+#subject_id+']'")
+	public ResultJson loadCourseBySubjectId(int page, int size, String type, int subject_id) {
 		Page<Object> p = PageHelper.startPage(page, size);
-		List<Course> list = courseDao.selectBySubjectId(subject_id);
+		List<Course> list = courseDao.selectBySubjectId(type, subject_id);
 		return queryListReturn(p, list);
 	}
 	
@@ -100,15 +100,15 @@ public class CourseServiceImpl implements CourseService{
      * @return
      */
 	@Override
-	@Cacheable(value="course",key="#root.methodName+'['+#page+','+#size+','+#direction_id+']'")
-	public ResultJson loadCourseByDirectionId(int page, int size, int direction_id) {
+	@Cacheable(value="course",key="#root.methodName+'['+#page+','+#size+','+#type+','+#direction_id+']'")
+	public ResultJson loadCourseByDirectionId(int page, int size, String type, int direction_id) {
 		Page<Object> p = PageHelper.startPage(page, size);
-		List<Course> list = courseDao.selectByDirectionId(direction_id);
+		List<Course> list = courseDao.selectByDirectionId(type,direction_id);
 		return queryListReturn(p, list);
 	}
 	
 	/**
-	 * 免费好课推荐查询
+	 * 免费好课查询
 	 * @param page
 	 * @param size
 	 * @return
@@ -248,6 +248,5 @@ public class CourseServiceImpl implements CourseService{
 		List<Course> list = courseDao.selectBySubjectIdAndScore(subject_id);
 		return queryListReturn(p, list);
 	}
-
 
 }

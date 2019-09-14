@@ -18,7 +18,7 @@ public interface CourseService {
      * @param subject_id
      * @return
      */
-	public ResultJson loadCourseBySubjectId(int page, int size, int subject_id);
+	public ResultJson loadCourseBySubjectId(int page, int size, String type, int subject_id);
 	
     /**
      * 根据方向ID查询课程列表（course表  ）
@@ -27,7 +27,7 @@ public interface CourseService {
      * @param direction_id
      * @return
      */
-	public ResultJson loadCourseByDirectionId(int page, int size, int direction_id);
+	public ResultJson loadCourseByDirectionId(int page, int size, String type, int direction_id);
 	
 	/**
 	 * 免费好课推荐查询
@@ -91,5 +91,6 @@ public interface CourseService {
 	 * @return
 	 */
 	public ResultJson loadCourseBySubjectIdAndScore(int page, int size, int subject_id);
+
 
 }

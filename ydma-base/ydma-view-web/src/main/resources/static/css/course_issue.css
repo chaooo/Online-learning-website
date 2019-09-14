@@ -1,0 +1,90 @@
+@charset "UTF-8";
+/* 问答列表 */
+.issueList .issue{position:relative;margin-bottom:8px;padding:32px;background:#fff;box-shadow:0 4px 8px 0 rgba(7,17,27,.1);border-radius:12px}
+.issueList .issue .flag{position:absolute;left:0;top:0;width:48px;height:48px;background:url(/img/icon_wenda.png) no-repeat 0 0;background-size:cover}
+.issueList .issue.finish .flag{background:url(/img/icon_finish.png) no-repeat 0 0;background-size:cover}
+.issueList .issue .img{width:96px;overflow:hidden;text-align:center}
+.issueList .issue .img img{display:block;width:40px;height:40px;margin:0 auto;border-radius:50%;vertical-align:top;background:grey;}
+.issueList .issue .cont{padding-right:20px;min-height:85px;position:relative;overflow:hidden;word-wrap:break-word;word-break:break-all}
+.issueList .issue .cont h3{}
+.issueList .issue .cont h3{font-size:14px;line-height:20px;color:#363d40;position:relative}
+.issueList .issue .cont h3 a{font-size:16px;font-weight:700;word-break:break-all;word-wrap:break-word;color:#07111b;line-height:24px}
+.issueList .issue .cont h3 a:hover{color:#f01414}
+.issueList .issue .cont .ans{margin-top:10px;position:relative;padding-left:20px;border-left:2px solid
+#d9dde1;color:#545c63;font-size:12px;line-height:20px;word-wrap:break-word;word-break:break-all;overflow:hidden;}
+.issueList .issue .cont .ans .btn{display:inline-block;padding:7px 16px;font-size:14px;line-height:1.42857143;border-radius:18px;color:#545c63;background-color:rgba(84,92,99,0.1);}
+.issueList .issue .fot{margin-top:12px;color:#93999f;font-size:12px;}
+.issueList .issue .fot a{color:#93999f;margin-right:30px}
+.issueList .issue .fot a:hover{color:#4d555d}
+.issueList .issue .fot .item{display:inline-block
+margin-right:26px}
+
+/* 笔记列表 */
+.noteList .row{position:relative;margin-bottom:8px;padding:32px;background:#fff;box-shadow:0 4px 8px 0 rgba(7,17,27,.1);border-radius:12px;list-style:none;}
+.noteList .row .media{float:left;width:40px;margin-right:10px}
+.noteList .row .media img{display:block;width:40px;height:40px;margin:0 auto;border-radius:50%;vertical-align:top;background:grey;}
+.noteList .row .bd{position:relative;margin-left:60px;margin-right:20px}
+.noteList .row .tit{margin-bottom:2px}
+.noteList .row .tit a{font-size:14px;color:#1c1f21;font-weight:700}
+.noteList .row .tit a:hover{color:#f01414}
+.noteList .row .note{font-size:12px;line-height:18px}
+.noteList .row .note a{color:#9199a1}
+.noteList .row .tip{position:absolute;right:0;top:0;display:block;color:#93999f;font-size:12px;overflow:hidden;line-height:22px;cursor:pointer}
+.noteList .row .tipoff:hover{color:#4d555d}
+.noteList .row .cnt{margin-top:3px;font-size:14px;line-height:24px;color:#303538;word-break:break-all;word-wrap:break-word}
+.noteList .row .footer{color:#9199a1;font-size:12px;margin-top:15px;line-height:34px}
+.noteList .row .footer .btn{display:inline-block;padding:7px 16px;font-size:14px;line-height:1.42857143;border-radius:18px;color:#545c63;background-color:rgba(84,92,99,0.1);}
+.noteList .row .action{margin-left:20px;color:#9199a1;font-size:12px;overflow:hidden;cursor:pointer;line-height:34px}
+.noteList .row .action.on,.noteList .row .action:hover{text-decoration:none;color:#4d555d}
+.noteList .row .action em{padding:0 3px 0}
+.noteList .row .action .icon-thumb-revert{font-size:16px;position:relative;top:2px}
+
+/* 评价列表 */
+.scoreInfo{margin-bottom:32px;padding:24px 32px;background:#fff;box-shadow:0 4px 8px 0 rgba(7,17,27,.1);border-radius:12px;overflow:hidden}
+.scoreInfo .title{color:#1c1f21;line-height:16px;font-weight:700}
+.scoreInfo .score{padding-left:16px;font-size:32px;font-weight:700;color:#4d555d;line-height:32px}
+.scoreInfo .star-box{margin-top:6px;padding-left:10px}
+.scoreInfo ul{text-align:right}
+.scoreInfo ul li{padding-left:50px;display:inline-block}
+.scoreInfo ul li span{padding-left:10px;position:relative;top:3px;font-size:24px;color:#f90;line-height:24px}
+.evaluateList .evaluate{margin-bottom:8px;padding:24px 32px;background:#fff;box-shadow:0 4px 8px 0 rgba(7,17,27,.1);border-radius:12px}
+.evaluate .errtip{line-height:48px;color:#f01400;font-size:12px;text-align:right}
+.evaluate .user{display:inline-block;width:64px;overflow:hidden;text-align:left}
+.evaluate .user img{display:inline-block;width:48px;height:48px;border-radius:50%;background:grey;}
+.evaluate .textarea{margin-left:64px;position:relative;padding:8px 10px;border:1px solid rgba(51,51,51,.4);border-radius:6px;background-color:#fff;box-sizing:border-box}
+.evaluate .textarea:focus{border-color:#93999f}
+.evaluate .textarea textarea{display:block;width:100%;height:82px;resize:none}
+.evaluate .textarea .num{position:absolute;right:10px;bottom:6px;font-size:12px;color:#b5b9bc;line-height:20px}
+.evaluate .textarea .num.err em{color:#f01400}
+.evaluate .ctrl-box{margin-left:64px}
+.evaluate .eitem{padding:10px 0 15px}
+.evaluate .eitem .etit{float:left;width:64px;font-weight:700;line-height:22px}
+.evaluate .eitem li{float:left;margin-right:45px;position:relative;}
+.evaluate .eitem li h3{display:inline-block;height:20px;line-height:20px;font-size:12px;color:#4d555d;text-align:left}
+.evaluate .eitem li .star-box{display:inline-block;height:20px}
+.star-box .star-tip{display:none;position:absolute;left:0;top:0;z-index:10;width:128px;padding:10px;font-size:14px;color:#f90;line-height:20px;border:1px solid
+#f90;background-color:#fff;}
+.star-box i.active{color:#f90;}
+.star-box .star-tip b{content:"";position:absolute;left:50%;top:-6px;margin-left:-6px;width:12px;height:6px;font-size:0;line-height:0;overflow:hidden;background:url(/img/arrow.png) no-repeat left top;}
+.evaluate .ctrlBox{margin-left:64px;}
+.evaluate .ctrlBox .btn{border-style:solid;border-width:1px;cursor:pointer;transition:all .3s;color:#fff;background-color:#f20d0d;border-color:#f20d0d;opacity:1;padding:11px 32px;font-size:16px;line-height:24px;border-radius:24px;}
+.evaluateList .elist{margin-top:0;border-top:none;padding-top:0;}
+.evaluateList .elist .evaluate{margin-bottom:8px;padding:24px 32px 24px 88px;background:#fff;box-shadow:0 4px 8px 0
+rgba(7,17,27,.1);border-radius:12px;position:relative;}
+.evaluateList .elist .imgBox{position:absolute;top:24px;left:24px;background-color:#f01400;width:48px;height:48px;border-radius:50%;overflow:hidden}
+.evaluateList .elist .imgBox img{display:block;height:100%}
+.evaluateList .elist .content-box .user-info .username{float:left;margin-right:10px;color:#787d82;font-size:12px;text-align:left;line-height:20px;font-weight:700}
+.evaluateList .elist .content-box .user-info .username:hover{color:#f01400}
+.evaluateList .elist .content-box .user-info .star-box{float:right}
+.evaluateList .elist .content-box .user-info .star-box span{font-size:12px;position:relative;top:-2px;margin-left:5px}
+.evaluateList .elist .content-box .content{float:none;padding-top:0;line-height:28px;font-size:14px;color:#14191e;text-align:left;margin-top:8px;word-break:break-all}
+.evaluateList .elist .content-box .info{margin-top:10px;color:#b5b9bc;font-size:12px;line-height:20px}
+.evaluateList .elist .content-box .info .show-reply-btn{margin-left:10px;line-height:36px;cursor:pointer}
+.evaluateList .elist .content-box .info .post-action{float:left;display:block;padding-left:16px;color:#b5bdc0;font-size:14px;overflow:hidden;cursor:pointer}
+.evaluateList .elist .content-box .info .post-action.on,.evaluateList .elist .content-box .info .post-action:hover{text-decoration:none;color:#4d555d}
+.evaluateList .elist .content-box .info .post-action .icon{cursor:pointer}
+.evaluateList .elist .content-box .info .post-action em{padding:0 3px 0;line-height:16px}
+.evaluateList .elist .content-box .info .post-action .icon-thumb-revert{position:relative;top:2px;font-size:16px}
+.evaluateList .elist .content-box .info .praise-anim{-webkit-animation:praiseAnim .5s .1s;-moz-animation:praiseAnim .5s .1s;-o-animation:praiseAnim .5s .1s;animation:praiseAnim .5s .1s}
+
+

@@ -1,32 +1,362 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <title>学习网-程序员的梦工厂</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="/css/base.css" type="text/css">
     <link rel="stylesheet" href="/css/course_detail.css" type="text/css">
+    <link rel="stylesheet" href="/css/course_issue.css" type="text/css">
 </head>
-
 <body>
-    <!-- 引入头部文件 -->
-    <header th:include="parts/common::head"></header>
-    <!-- -----------------------    页面主体开始    -->
-    <main id="detailPage">
-        <!-- =============================课程内容===================== -->
-        <div class="courseInfo">
-
+<!-- 引入头部文件 -->
+<header th:include="parts/common::head"></header>
+<!-- -----------------------    页面主体开始    -->
+<main id="detailPage">
+    <!-- =============================课程内容===================== -->
+    <div class="courseInfo">
+        <div class="wrap">
+            <div class="path">
+                <a href="/course/list">课程</a>
+                \<a href="/course/list?c=be">后端开发</a>
+                \<a href="/course/list?c=java">Java</a>
+                \<a href="/course/detail?id=">Redis入门</a>
+            </div>
+            <h2>Redis入门</h2>
+            <div class="statics">
+                <div class="item">
+                    <span class="k">难度</span><span>中级</span>
+                </div>
+                <div class="item">
+                    <span class="k">时长</span><span> 2小时26分</span>
+                </div>
+                <div class="item">
+                    <span class="k">学习人数</span><span>88865</span>
+                </div>
+                <div class="item">
+                    <span class="k">综合评分</span><span>95.7</span>
+                </div>
+            </div>
+            <div class="extra">
+                <div class="share"><i class="icon-star_outline"></i><span>收藏</span></div>
+                <div class="share"><i class="icon-star2"></i><span>已收藏</span></div>
+            </div>
         </div>
-        <!-- =============================章节列表===================== -->
-        <div class="capterList">
-
-
+    </div>
+    <!-- =============================tab切换导航===================== -->
+    <div class="courseMenu">
+        <ul class="menu">
+            <li><a v-bind:class="{'active':showType==1}" href="javascript:;" v-on:click="showPageType(1)">课程章节</a></li>
+            <li><a v-bind:class="{'active':showType==2}" href="javascript:;" v-on:click="showPageType(2)">问答评论</a><span>670</span></li>
+            <li><a v-bind:class="{'active':showType==3}" href="javascript:;" v-on:click="showPageType(3)">同学笔记</a></li>
+            <li><a v-bind:class="{'active':showType==4}" href="javascript:;" v-on:click="showPageType(4)">用户评价</a><span>162</span></li>
+        </ul>
+    </div>
+    <!-- =============================课程主体===================== -->
+    <div class="courseContent flexBetween">
+        <div class="content">
+            <!-- =================章节列表============= -->
+            <div v-show="showType==1" class="capterList">
+                <div class="chapter">
+                    简介：Redis和Jedis使用的入门级教程
+                </div>
+                <div class="chapter">
+                    <!-- 章节标题 -->
+                    <h3>第6章 Redis的数据结构</h3>
+                    <p class="description">Redis的数据结构</p>
+                    <!-- 章节标题 end -->
+                    <!-- 章节小节 -->
+                    <ul class="video">
+                        <li>
+                            <a href="/video"><i class="icon-tick-revert done"></i><i class="imv2-play_circle type"></i>
+                                6-1 05-Redis的数据结构之字符串(10:36)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/video"><i class="icon-nolearn start"></i><i class="imv2-play_circle type"></i>
+                                6-2 06-Redis的数据结构之哈希(08:16)
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- 章节小节 end -->
+                </div>
+                <div class="chapter unlearn">
+                    <!-- 章节标题 -->
+                    <h3>第7章 Redis的通用命令 </h3>
+                    <p class="description">Redis的通用命令 </p>
+                    <!-- 章节标题 end -->
+                    <!-- 章节小节 -->
+                    <ul class="video">
+                        <li>
+                            <a href="/video"><i class="icon-nolearn start"></i><i class="imv2-play_circle type"></i>
+                                6-1 05-Redis的数据结构之字符串(10:36)
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- 章节小节 end -->
+                </div>
+            </div>
+            <!-- =================问答列表============= -->
+            <div v-show="showType==2" class="issueList">
+                <div class="bar">
+                    <a href="" class="btn active">全部</a>
+                    <a href="" class="btn">未解决</a>
+                    <a href="" class="btn">精华</a>
+                    <span class="sub">我要发布</span>
+                </div>
+                <div class="issueTab">
+                    <div class="issue finish">
+                        <i class="flag"></i>
+                        <div class="img">
+                            <a href="" target="_blank"><img src="" alt="头像"></a>
+                        </div>
+                        <div class="cont">
+                            <h3>
+                                <a href="" target="_blank">
+                                    发现keys my? 不管用 keys my* 才能达到效果...?
+                                </a>
+                            </h3>
+                            <div class="ans">
+                                <p>最新回答 / <a href="" target="_blank">晨曦晓月</a></p>
+                                <p>？是匹配一个字符，*是匹配n个字符（你试试对不对）</p>
+                            </div>
+                            <div class="fot">
+                                <div class="l-box l">
+                                    <a href="" target="_blank">
+                                        <span class="item">
+                                            1 回答
+                                        </span>
+                                        <span class="item">
+                                            6 浏览
+                                        </span>
+                                    </a>
+                                    <a href="" target="_blank">7-1 10-Redis的Keys的通用操作</a>
+                                </div>
+                                <em class="r">5天前</em>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="issue">
+                        <i class="flag"></i>
+                        <div class="img">
+                            <a href="" target="_blank"><img src="" alt="头像"></a>
+                        </div>
+                        <div class="cont">
+                            <h3>
+                                <a href="" target="_blank">
+                                    发现keys my? 不管用 keys my* 才能达到效果...?
+                                </a>
+                            </h3>
+                            <div class="ans">
+                                <a href="" class="btn" target="_blank">+ 我来回答</a>
+                            </div>
+                            <div class="fot">
+                                <div class="l-box l">
+                                    <a href="" target="_blank">
+                                        <span class="item">
+                                            1 回答
+                                        </span>
+                                        <span class="item">
+                                            6 浏览
+                                        </span>
+                                    </a>
+                                    <a href="" target="_blank">7-1 10-Redis的Keys的通用操作</a>
+                                </div>
+                                <em class="r">5天前</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- =================笔记列表============= -->
+            <div v-show="showType==3" class="noteList">
+                <div class="bar">
+                    <a href="" class="btn active">最新</a>
+                    <a href="" class="btn">点赞</a>
+                    <a href="" class="chk">
+                        <div class="switch">
+                            <div class="line"></div>
+                            <div class="round"></div>
+                        </div>
+                        <span>只看我的</span>
+                    </a>
+                </div>
+                <ul class="noteTab">
+                    <li class="row">
+                        <div class="media">
+                            <a href="" target="_blank"><a href="" target="_blank"><img src="" alt="头像"></a></a>
+                        </div>
+                        <div class="bd">
+                            <div class="tit">
+                                <a href="" target="_blank">qq_慕虎4441645</a>
+                            </div>
+                            <div class="cont">
+                                <div class="note">
+                                    <a href="">源自：9-3 14-Redis的持久化的AOF的方式</a>
+                                </div>
+                                <a href="javascript:;" class="tip">举报</a>
+                                <div class="autowrap">
+                                    <p>优势：</p>
+                                    <p>1、更高的数据安全性</p>
+                                    <p>同步策略：每秒同步，每修改同步、不同步</p>
+                                    <p>每秒同步：异步完成，效率高，系统出现宕机，那么这一秒中修改的数据就会丢失</p>
+                                    <p>每修改同步：可以看作同步持久化，么一次发生数据的变化，都会立即写到磁盘当中，效率低，但是最安全</p>
+                                </div>
+                                <div class="footer clearfix">
+                                    <div class="l">
+                                        <a title="赞" href="javascript:;" class="btn">
+                                            <span class="icon-thumb-revert"></span>
+                                            <em>0</em>
+                                        </a>
+                                        <a title="采集" href="javascript:;" class="action">
+                                            <i>采集</i>
+                                            <em>0</em>
+                                        </a>
+                                        <a href="" target="_blank" class="action">查看全文</a>
+                                    </div>
+                                    <span title="1天前" class="r timeago">1天前</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- =================评价列表============= -->
+            <div v-show="showType==4" class="evaluateList">
+                <div class="scoreInfo clearfix">
+                    <div class="title l">综合<br>评分</div>
+                    <div class="score l">
+                        95.7
+                    </div>
+                    <div class="star-box l">
+                        <i class="icon-star2 active"></i>
+                        <i class="icon-star2 active"></i>
+                        <i class="icon-star2 active"></i>
+                        <i class="icon-star2 active"></i>
+                        <i class="icon-star2"></i>
+                    </div>
+                    <ul>
+                        <li>内容实用<span>9.7</span></li>
+                        <li>简洁易懂<span>9.5</span></li>
+                        <li>逻辑清晰<span>9.5</span></li>
+                    </ul>
+                </div>
+                <div class="evaluate clearfix">
+                    <div class="eitem clearfix">
+                        <div class="etit">评分：</div>
+                        <ul id="toStar">
+                            <li>
+                                <h3>内容实用</h3>
+                                <div id="cType1" data-field="内容实用" class="star-box">
+                                    <i class="icon-star2 active"
+                                    v-for="(n,i) in 5" v-bind:i="i" v-on:mouseover="starOver($event)" v-on:mouseout="starOut($event)"></i>
+                                    <div class="star-tip"></div>
+                            </li>
+                            <li>
+                                <h3>简洁易懂</h3>
+                                <div id="cType2" data-field="简洁易懂" class="star-box">
+                                    <i class="icon-star2 active"
+                                    v-for="(n,i) in 5" v-bind:i="i" v-on:mouseover="starOver($event)" v-on:mouseout="starOut($event)"></i>
+                                    <div class="star-tip"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <h3>逻辑清晰</h3>
+                                <div id="cType3" data-field="逻辑清晰" class="star-box">
+                                    <i class="icon-star2 active"
+                                    v-for="(n,i) in 5" v-bind:i="i" v-on:mouseover="starOver($event)" v-on:mouseout="starOut($event)"></i>
+                                    <div class="star-tip"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="eitem clearfix">
+                        <div class="etit">难度：</div>
+                        <div class="filter">
+                            <span class="moco-label" data-level="1">入门</span>
+                            <span class="moco-label" data-level="2">初级</span>
+                            <span class="moco-label" data-level="3">中级</span>
+                            <span class="moco-label" data-level="4">高级</span>
+                            <span class="moco-label" data-level="5">专业</span>
+                        </div>
+                    </div>
+                    <div class="eitem clearfix">
+                        <a href="" class="user l">
+                            <img src="" alt="头像">
+                        </a>
+                        <div class="textarea">
+                            <textarea placeholder="写下你的对该课程的评价..." maxlength="300"></textarea>
+                            <span class="num"><em>0</em>/300</span>
+                        </div>
+                    </div>
+                    <div class="ctrlBox clearfix">
+                        <div class="btn r">提交</div>
+                        <div class="errtip l">请选择课程难度</div>
+                    </div>
+                </div>
+                <ul class="elist">
+                    <li class="evaluate">
+                        <a href="" class="imgBox">
+                            <img src="" alt="头像">
+                        </a>
+                        <div class="content-box">
+                            <div class="user-info clearfix">
+                                <a href="/u/6677455/courses" class="username">墨逍遥</a>
+                                <div class="star-box">
+                                    <i class="icon-star2 active"></i>
+                                    <i class="icon-star2 active"></i>
+                                    <i class="icon-star2 active"></i>
+                                    <i class="icon-star2 active"></i>
+                                    <i class="icon-star2 active"></i>
+                                    <span>10分</span>
+                                </div>
+                            </div>
+                            <!--user-info end-->
+                            <p class="content">Redis入门课程 很值的学习 非常不错</p>
+                            <div class="info clearfix">
+                                <div class="actions l">
+                                    <a title="赞" href="javascript:;" class="js-pl-praise moco-btn moco-btn-gray-l" data-id="140265">
+                                        <span class="icon-thumb-revert  "></span>
+                                        <em>0</em>
+                                    </a>
+                                </div>
+                                <span class="time r">时间：2019-08-20</span>
+                            </div>
+                        </div>
+                        <!--content end-->
+                    </li>
+                </ul>
+            </div>
         </div>
-    </main>
-    <!-- -----------------------    页面主体结束    -->
-    <!-- 引入尾部文件 -->
-    <footer th:include="parts/common::foot"></footer>
+        <div class="aside">
+            <!-- =================学习进度card============= -->
+            <div class="courseRate">
+                <div class="learn">
+                    <div class="info">
+                        <span>已学 32% </span>学习耗时 1小时 1分
+                    </div>
+                    <div class="progress">
+                        <ins data-progress="32" style="display: inline-block; width: 32%;"></ins>
+                    </div>
+                    <div class="media"> 上次学至 10-1 15-Redis的课程总结 </div>
+                    <a href="/video/14933" class="btn">继续学习</a>
+                </div>
+                <div class="tip">
+                    <dl class="first">
+                        <dt>课程须知</dt>
+                        <dd class="autowrap">初级课程，会java基本语法即可</dd>
+                    </dl>
+                    <dl>
+                        <dt>老师告诉你能学到什么？</dt>
+                        <dd class="autowrap">NoSql和Redis是什么？Redis的使用场景，安装和使用。通过Jedis连接到Redis；Redis的通用命令，事务和持久化</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- -----------------------    页面主体结束    -->
+<!-- 引入尾部文件 -->
+<footer th:include="parts/common::foot"></footer>
 <!-- 引入JS文件 -->
 <script type="text/javascript" src="/lib/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="/lib/vue.js"></script>
@@ -37,12 +367,18 @@ var detailPage = new Vue({
         direction_id: null,
         subject_id: null,
         courseList: [],
+        showType: 1, //1显示章节，2显示问答，3显示笔记，4显示评论
+        starText:{ //评分提示语
+            cType1: ["基本用不上", "有部分实用价值", "比较实用，对工作有帮助", "很实用，对工作帮助很大", "超级实用，我工作中直接用到了"],
+            cType2: ["很罗嗦，完全搞不明白", "多余的内容较多，我挑着看", "语言简洁，听得很顺畅", "有些讲解很精彩，对我有帮助", "言简意赅，老师太牛了"],
+            cType3: ["逻辑混乱，完全搞不明白", "逻辑不清，目标不明", "按课程顺序，达到部分学习目标", "逻辑清晰，知识结构合理，基本达到目标", "学习路线明确，重点突出，收获达到预期"]
+        },
 
     },
     computed: {
         //第几页
         page: function() {
-            return this.getUrlParam("page")>1?this.getUrlParam("page"):1;
+            return this.getUrlParam("page") > 1 ? this.getUrlParam("page") : 1;
         }
     },
     methods: {
@@ -58,8 +394,27 @@ var detailPage = new Vue({
             var r = decodeURIComponent(window.location.search).substr(1).match(reg);
             //返回参数值
             if (r != null) return (r[2]);
-            return null; 
+            return null;
         },
+        showPageType: function(type){
+            this.showType = type*1;
+        },
+        starOver: function(event){
+            var el = event.currentTarget;
+            $(el).nextAll("i").removeClass("active");
+            $(el).prevAll("i").addBack().addClass("active");
+            var c = $(el).parent().attr("id");
+            var v = $(el).index(),
+            h = $(el).position().left + parseInt($(el).width()) / 2,
+            g = $(el).parent().find(".star-tip");
+            h -= parseInt(g.outerWidth(!0)) / 2;
+            g.html("<b></b>" + this.starText[c][v]).stop(!0, !0).css("top", "30px").css("left", h + "px").fadeIn(100);
+        },
+        starOut: function(event){
+            var el = event.currentTarget;
+            $(el).parent().find(".star-tip").stop(!0, !0).hide(0);
+        },
+
 
     },
     mounted: function() {

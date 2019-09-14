@@ -8,44 +8,34 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class WebController {
-
-	/**
-	 * 主页
-	 * @return
-	 */
+	// 主页
 	@RequestMapping({"/index", "/", ""})
 	public ModelAndView toIndex() {
 		ModelAndView mav = new ModelAndView("index");//templates/index.html
 		return mav;
 	}
-
-	/**
-	 * 课程列表
-	 * @return
-	 */
+	// 登录,注册
+	@RequestMapping("user/login")
+	public ModelAndView toLogin() {
+		ModelAndView mav = new ModelAndView("login");//templates/login.html
+		return mav;
+	}
+	//课程列表
 	@RequestMapping("/course/list")
 	public ModelAndView CourseList() {
 		ModelAndView mav = new ModelAndView("course_list");//templates/course_list.html
 		return mav;
 	}
-	
-	/**
-	 * 课程详情
-	 * @return
-	 */
+	// 课程详情
 	@RequestMapping("/course/detail")
 	public ModelAndView Course() {
 		ModelAndView mav = new ModelAndView("course_detail");//templates/course_detail.html
 		return mav;
 	}
-	
-	/**
-	 * 登录,注册
-	 * @return
-	 */
-	@RequestMapping("user/sign")
-	public ModelAndView toLogin() {
-		ModelAndView mav = new ModelAndView("index");//templates/sign.html
+	// 视频播放
+	@RequestMapping("/video")
+	public ModelAndView Video() {
+		ModelAndView mav = new ModelAndView("video");//templates/course_detail.html
 		return mav;
 	}
 	

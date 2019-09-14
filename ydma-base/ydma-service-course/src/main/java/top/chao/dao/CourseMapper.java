@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.type.JdbcType;
@@ -89,17 +90,8 @@ public interface CourseMapper {
      * @param subject_id
      * @return
      */
-    @Select({
-        "select",
-        "id, name, intro, learn_count, difficulty, score, image, publish_time, price, ",
-        "subject_id, direction_id, learn_time",
-        "from course",
-        "where subject_id = #{subject_id,jdbcType=INTEGER}",
-        "order by learn_count desc"
-    })
-    @ResultMap("courseMap")
-    List<Course> selectBySubjectId(Integer subject_id);
-    
+    @SelectProvider(type=CourseSqlProvider.class, method="selectBySubjectId")
+    List<Course> selectBySubjectId(String type, Integer subject_id);
     
     /**
      *  根据科目ID查询课程列表（course表  ）根据评分排序
@@ -116,24 +108,17 @@ public interface CourseMapper {
     })
     @ResultMap("courseMap")
     List<Course> selectBySubjectIdAndScore(Integer subject_id);
+    
     /**
      * 根据方向ID 查询课程列表（course表  ）
      * @param direction_id
      * @return
      */
-    @Select({
-        "select",
-        "id, name, intro, learn_count, difficulty, score, image, publish_time, price, ",
-        "subject_id, direction_id, learn_time",
-        "from course",
-        "where direction_id = #{direction_id,jdbcType=INTEGER}",
-        "order by learn_count desc"
-    })
-    @ResultMap("courseMap")
-    List<Course> selectByDirectionId(Integer direction_id);
+    @SelectProvider(type=CourseSqlProvider.class, method="selectByDirectionId")
+    List<Course> selectByDirectionId(String type, Integer direction_id);
     
     /**
-     * 免费好课推荐查询
+     * 免费好课查询
      * @return
      */
     @Select({
@@ -156,7 +141,6 @@ public interface CourseMapper {
         "id, name, intro, learn_count, difficulty, score, image, publish_time, price, ",
         "subject_id, direction_id, learn_time",
         "from course",
-        "where price = 0",
         "order by learn_count desc,score desc"
     })
     @ResultMap("courseMap")
@@ -220,4 +204,5 @@ public interface CourseMapper {
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Course record);
+    
 }

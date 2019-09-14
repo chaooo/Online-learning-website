@@ -114,4 +114,40 @@ public class CourseSqlProvider {
         
         return sql.toString();
     }
+    
+    public String selectBySubjectId(String type, Integer subject_id){
+    	 SQL sql = new SQL();
+    	 sql.SELECT("*");
+    	 sql.FROM("course");
+    	 sql.WHERE("subject_id="+subject_id);
+    	 if("hot".equals(type)) {
+    		 sql.ORDER_BY("learn_count desc");
+    	 } else if("new".equals(type)) {
+    		 sql.ORDER_BY("publish_time desc");
+    	 } else if("free".equals(type)) {
+    		 sql.WHERE("price = 0");
+    		 sql.ORDER_BY("learn_count desc","score desc");
+    	 } else {
+    		 sql.ORDER_BY("learn_count desc","score desc");
+    	 }
+    	 return sql.toString();
+    }
+    
+    public String selectByDirectionId(String type, Integer direction_id){
+	   	 SQL sql = new SQL();
+	   	 sql.SELECT("*");
+	   	 sql.FROM("course");
+	   	 sql.WHERE("direction_id="+direction_id);
+	   	 if("hot".equals(type)) {
+	   		 sql.ORDER_BY("learn_count desc");
+	   	 } else if("new".equals(type)) {
+	   		 sql.ORDER_BY("publish_time desc");
+	   	 } else if("free".equals(type)) {
+	   		 sql.WHERE("price = 0");
+	   		 sql.ORDER_BY("learn_count desc","score desc");
+	   	 } else {
+	   		 sql.ORDER_BY("learn_count desc","score desc");
+	   	 }
+	   	 return sql.toString();
+   }
 }

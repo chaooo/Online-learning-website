@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <title>学习网-程序员的梦工厂</title>
@@ -8,74 +7,73 @@
     <link rel="stylesheet" href="/css/base.css" type="text/css">
     <link rel="stylesheet" href="/css/course_list.css" type="text/css">
 </head>
-
 <body>
-    <!-- 引入头部文件 -->
-    <header th:include="parts/common::head"></header>
-    <!-- -----------------------    页面主体开始    -->
-    <main id="listPage">
-        <!-- =============================课程分类===================== -->
-        <div class="courseNav">
-            <div class="navWrap">
-                <div class="navTit">课程列表</div>
-                <div class="navCont">
-                    <dl>
-                        <dt>方向：</dt>
-                        <dd>
-                            <a href="/course/list" v-bind:class="{'on': !direction_id}">全部</a>
-                            <a v-for="direction in courseDirection" v-bind:href="'/course/list?direction_id='+direction.id" v-bind:class="{'on': direction.id==direction_id}" v-text="direction.name">课程方向</a>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>分类：</dt>
-                        <dd>
-                            <a v-bind:href="'/course/list?direction_id='+direction_id" v-bind:class="{'on': !subject_id}">全部</a>
-                            <template v-for="direction in courseDirection">
-                                <a v-for="subject in direction.subjects" v-bind:href="'/course/list?subject_id='+subject.id" v-bind:class="{'on': subject.id==subject_id}" v-text="subject.name">学科名</a>
-                            </template>
-                        </dd>
-                    </dl>
-                </div>
+<!-- 引入头部文件 -->
+<header th:include="parts/common::head"></header>
+<!-- -----------------------    页面主体开始    -->
+<main id="listPage">
+    <!-- =============================课程分类===================== -->
+    <div class="courseNav">
+        <div class="navWrap">
+            <div class="navTit">课程列表</div>
+            <div class="navCont">
+                <dl>
+                    <dt>方向：</dt>
+                    <dd>
+                        <a href="/course/list" v-bind:class="{'on': !direction_id}">全部</a>
+                        <a v-for="direction in courseDirection" v-bind:href="'/course/list?direction_id='+direction.id" v-bind:class="{'on': direction.id==direction_id}" v-text="direction.name">课程方向</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>分类：</dt>
+                    <dd>
+                        <a v-bind:href="'/course/list?direction_id='+direction_id" v-bind:class="{'on': !subject_id}">全部</a>
+                        <template v-for="direction in courseDirection">
+                            <a v-for="subject in direction.subjects" v-bind:href="'/course/list?subject_id='+subject.id" v-bind:class="{'on': subject.id==subject_id}" v-text="subject.name">学科名</a>
+                        </template>
+                    </dd>
+                </dl>
             </div>
         </div>
-        <!-- =============================课程列表===================== -->
-        <div class="courseList">
-            <div class="courseBar">
-                <a href="javascript:;" class="active">推荐</a>
-                <a href="javascript:;">最新</a>
-                <a href="javascript:;">最热</a>
-                <a href="javascript:;">免费</a>
-            </div>
-            <div class="courseCard flex">
-                <div class="card" v-for="course in courseList" v-bind:cid="course.id">
-                    <img v-bind:src="'/img/course/'+course.image" alt="">
-                    <div class="fade">
-                        <p class="name" v-text="course.name">课程名</p>
-                        <p class="info" v-text="course.intro">课程描述</p>
-                        <p class="btm flexBetween">
-                            <span><i v-text="'￥'+course.price"></i></span>
-                            <span><em v-text="course.learn_count">555</em>人在学</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="empty" v-if="pages==0">
-                    暂无数据
+    </div>
+    <!-- =============================课程列表===================== -->
+    <div class="courseList">
+        <div class="courseBar">
+            <a href="javascript:;" class="active">推荐</a>
+            <a href="javascript:;">最新</a>
+            <a href="javascript:;">最热</a>
+            <a href="javascript:;">免费</a>
+        </div>
+        <div class="courseCard flex">
+            <div class="card" v-for="course in courseList" v-bind:cid="course.id">
+                <img v-bind:src="'/img/course/'+course.image" alt="">
+                <div class="fade">
+                    <p class="name" v-text="course.name">课程名</p>
+                    <p class="info" v-text="course.intro">课程描述</p>
+                    <p class="btm flexBetween">
+                        <span><i v-text="'￥'+course.price"></i></span>
+                        <span><em v-text="course.learn_count">555</em>人在学</span>
+                    </p>
                 </div>
             </div>
-            <!-- 分页配置 -->
-            <div class="page" v-if="pages>0">
-                <a v-bind:class="{'dis':page==1}" v-bind:href="page==1?'javascript:;':'/course/list?page=1'+(subject_id?'&subject_id='+subject_id:(direction_id?'&direction_id='+direction_id:''))">首页</a>
-                <a v-bind:class="{'dis':page==1}" v-bind:href="page==1?'javascript:;':'/course/list?page='+(page-1)+(subject_id?'&subject_id='+subject_id:(direction_id?'&direction_id='+direction_id:''))">上一页</a>
-                <a v-for="i in pages" v-bind:class="page==i?'p on':'p'" v-bind:href="page==i?'javascript:;':'/course/list?page='+i+(subject_id?'&subject_id='+subject_id:(direction_id?'&direction_id='+direction_id:''))" v-text="i">1</a>
-                <a v-bind:class="{'dis':page==pages}" v-bind:href="page==pages?'javascript:;':'/course/list?page='+(1+page)+(subject_id?'&subject_id='+subject_id:(direction_id?'&direction_id='+direction_id:''))">下一页</a>
-                <a v-bind:class="{'dis':page==pages}" v-bind:href="page==pages?'javascript:;':'/course/list?page='+pages+(subject_id?'&subject_id='+subject_id:(direction_id?'&direction_id='+direction_id:''))">尾页</a>
+            <div class="empty" v-if="pages==0">
+                暂无数据
             </div>
         </div>
-    </main>
-    <!-- -----------------------    页面主体结束    -->
-    <!-- 引入尾部文件 -->
-    <footer th:include="parts/common::foot"></footer>
-    <!-- 引入JS文件 -->
+        <!-- 分页配置 -->
+        <div class="page" v-if="pages>0">
+            <a v-bind:class="{'dis':page==1}" v-bind:href="page==1?'javascript:;':'/course/list?page=1'+(subject_id?'&subject_id='+subject_id:(direction_id?'&direction_id='+direction_id:''))">首页</a>
+            <a v-bind:class="{'dis':page==1}" v-bind:href="page==1?'javascript:;':'/course/list?page='+(page-1)+(subject_id?'&subject_id='+subject_id:(direction_id?'&direction_id='+direction_id:''))">上一页</a>
+            <a v-for="i in pages" v-bind:class="page==i?'p on':'p'" v-bind:href="page==i?'javascript:;':'/course/list?page='+i+(subject_id?'&subject_id='+subject_id:(direction_id?'&direction_id='+direction_id:''))" v-text="i">1</a>
+            <a v-bind:class="{'dis':page==pages}" v-bind:href="page==pages?'javascript:;':'/course/list?page='+(1+page)+(subject_id?'&subject_id='+subject_id:(direction_id?'&direction_id='+direction_id:''))">下一页</a>
+            <a v-bind:class="{'dis':page==pages}" v-bind:href="page==pages?'javascript:;':'/course/list?page='+pages+(subject_id?'&subject_id='+subject_id:(direction_id?'&direction_id='+direction_id:''))">尾页</a>
+        </div>
+    </div>
+</main>
+<!-- -----------------------    页面主体结束    -->
+<!-- 引入尾部文件 -->
+<footer th:include="parts/common::foot"></footer>
+<!-- 引入JS文件 -->
 <script type="text/javascript" src="/lib/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="/lib/vue.js"></script>
 <script type="text/javascript">
@@ -158,7 +156,7 @@ var listPage = new Vue({
         //根据方向 加载课程列表
         loadCourseListAll: function(size, page) {
             var $self = this;
-            $.get("http://localhost:7001/course/all", {
+            $.get("http://localhost:7001/course/recommend", {
                 size: size,
                 page: page
             }).done(function(res) {

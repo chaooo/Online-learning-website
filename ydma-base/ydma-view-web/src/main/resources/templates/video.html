@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学习网-程序员的梦工厂</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/css/video.css" type="text/css">
+    <link rel="stylesheet" href="/css/course_issue.css" type="text/css">
+</head>
+<body>
+<!-- 引入头部文件 -->
+<header th:include="parts/common::head"></header>
+<!--                    页面主体开始                         -->
+<main id="videoPage">
+    <!-- =============================视频区===================== -->
+    <div class="videoArea">
+        <div class="videoCon flex">
+            <!--            章节列表  -->
+            <div class="caplist" id="caplist">
+                <ul>
+                    <li class="captit">
+                        <span>第1章 课程介绍</span>
+                    </li>
+                    <li class="capli" data-id="14922">
+                        <a class="clearfix" href=" "><em class="imv2-video_circle"></em>1-1 00-课程介绍(01:17)<i class="imv2-empty"></i></a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="captit">
+                        <span>第2章 NoSQL概述</span>
+                    </li>
+                    <li class="capli" data-id="14924">
+                        <a class="clearfix" href=""><em class="imv2-video_circle"></em>2-1 01-NoSQL的概述(10:24)<i class="imv2-empty"></i></a>
+                    </li>
+                    <li class="capli current" data-id="14924">
+                        <a class="clearfix" href=""><em class="imv2-video_circle"></em>2-1 02-NoSQL的其他(10:24)<i class="imv2-empty"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!--              左侧菜单   -->
+            <div class="vleft">
+                <dl>
+                    <dd v-on:click="toggleCapter($event)">
+                        <i class="imv2-nav_chapter"></i>
+                        <span>章节</span>
+                    </dd>
+                    <dd>
+                        <i class="imv2-yuanwen"></i>
+                        <span>提问</span>
+                    </dd>
+                    <dd>
+                        <i class="imv2-homework"></i>
+                        <span>笔记</span>
+                    </dd>
+                    <dd>
+                        <i class="imv2-chat_bubble"></i>
+                        <span>评论</span>
+                    </dd>
+                </dl>
+            </div>
+            <!--             中间视频部分  -->
+            <div class="vcenter">
+                <div class="videoBox">
+                    
+                </div>
+            </div>
+            <!--            右侧及隐藏输入框 -->
+            <div class="vright" id="vRight">
+                <!-- 课程介绍 -->
+                <div class="vintro current">
+                    <i class="imv2-close vclose" v-on:click="closeVintro()"></i>
+                    <i class="imv2-arrow3_l vshow" v-on:click="showVintro()"></i>
+                    <div class="vwrap">
+                        <div class="vteach clearfix">
+                            <a href="" class="img" target="_blank">
+                                <img src="" alt="头像">
+                            </a>
+                            <dl>
+                                <dd class="name">
+                                    <a href="" target="_blank">慕神</a><i class="imv2-imooc"></i>
+                                </dd>
+                                <dd class="title">JAVA开发工程师</dd>
+                            </dl>
+                        </div>
+                        <p class="info">
+                            资深软件架构师、WEB技术领域专家。在电信行业和电子商务领域有着非常丰富的经验，能灵活应用多种开发环境进行项目开发，精通java、oracle、 MySql、freemarker等编程语言和数据库系统，深入掌握spring、springmvc等技术框架。具备很强的项目管理能力和丰富的项目实施经验。讲课细致、幽默、风趣、生动!
+                        </p>
+                    </div>
+                </div>
+                <!-- 提问 -->
+                <div class="veveBox">
+                    <i class="imv2-close vclose"></i>
+                    <div class="evaluate issueIpt">
+                        <div class="ehd">提问题</div>
+                        <input class="tit" type="text" placeholder="请一句话说明你的问题" maxlength="50">
+                        <div class="eitem">
+                            <div class="textarea">
+                                <textarea placeholder="请输入问题内容..." maxlength="300"></textarea>
+                                <span class="num"><em>0</em>/300</span>
+                            </div>
+                        </div>
+                        <div class="ctrlBox clearfix">
+                            <div class="btn r">提交</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 写笔记  -->
+                <div class="veveBox">
+                    <i class="imv2-close vclose"></i>
+                    <div class="evaluate">
+                        <div class="ehd">写笔记</div>
+                        <input class="tit" type="text" placeholder="笔记标题" maxlength="50">
+                        <div class="eitem">
+                            <div class="textarea">
+                                <textarea placeholder="请输入笔记内容..." maxlength="300"></textarea>
+                                <span class="num"><em>0</em>/300</span>
+                            </div>
+                        </div>
+                        <div class="ctrlBox clearfix">
+                            <div class="btn r">提交</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 发表评论 -->
+                <div class="veveBox">
+                    <i class="imv2-close vclose"></i>
+                    <div class="evaluate">
+                        <div class="ehd">发表评论</div>
+                        <div class="eitem">
+                            <div class="textarea">
+                                <textarea placeholder="写下你的对该课程的评价..." maxlength="300"></textarea>
+                                <span class="num"><em>0</em>/300</span>
+                            </div>
+                        </div>
+                        <div class="ctrlBox clearfix">
+                            <div class="btn r">提交</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ======================= 问答/评论/笔记 ==================== -->
+    <!-- =============================tab切换导航===================== -->
+    <div class="issueMenu">
+        <ul class="menu">
+            <li><a v-bind:class="{'active':showType==2}" href="javascript:;" v-on:click="showPageType(2)">问答评论</a><span>670</span></li>
+            <li><a v-bind:class="{'active':showType==3}" href="javascript:;" v-on:click="showPageType(3)">同学笔记</a></li>
+            <li><a v-bind:class="{'active':showType==4}" href="javascript:;" v-on:click="showPageType(4)">用户评价</a><span>162</span></li>
+        </ul>
+    </div>
+    <div class="issueArea">
+        <div class="content">
+            <!-- =================问答列表============= -->
+            <div v-show="showType==2" class="issueList">
+                <div class="bar">
+                    <a href="" class="btn active">全部</a>
+                    <a href="" class="btn">未解决</a>
+                    <a href="" class="btn">精华</a>
+                    <span class="sub">我要发布</span>
+                </div>
+                <div class="issueTab">
+                    <div class="issue finish">
+                        <i class="flag"></i>
+                        <div class="img">
+                            <a href="" target="_blank"><img src="" alt="头像"></a>
+                        </div>
+                        <div class="cont">
+                            <h3>
+                                <a href="" target="_blank">
+                                    发现keys my? 不管用 keys my* 才能达到效果...?
+                                </a>
+                            </h3>
+                            <div class="ans">
+                                <p>最新回答 / <a href="" target="_blank">晨曦晓月</a></p>
+                                <p>？是匹配一个字符，*是匹配n个字符（你试试对不对）</p>
+                            </div>
+                            <div class="fot">
+                                <div class="l-box l">
+                                    <a href="" target="_blank">
+                                        <span class="item">
+                                            1 回答
+                                        </span>
+                                        <span class="item">
+                                            6 浏览
+                                        </span>
+                                    </a>
+                                    <a href="" target="_blank">7-1 10-Redis的Keys的通用操作</a>
+                                </div>
+                                <em class="r">5天前</em>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="issue">
+                        <i class="flag"></i>
+                        <div class="img">
+                            <a href="" target="_blank"><img src="" alt="头像"></a>
+                        </div>
+                        <div class="cont">
+                            <h3>
+                                <a href="" target="_blank">
+                                    发现keys my? 不管用 keys my* 才能达到效果...?
+                                </a>
+                            </h3>
+                            <div class="ans">
+                                <a href="" class="btn" target="_blank">+ 我来回答</a>
+                            </div>
+                            <div class="fot">
+                                <div class="l-box l">
+                                    <a href="" target="_blank">
+                                        <span class="item">
+                                            1 回答
+                                        </span>
+                                        <span class="item">
+                                            6 浏览
+                                        </span>
+                                    </a>
+                                    <a href="" target="_blank">7-1 10-Redis的Keys的通用操作</a>
+                                </div>
+                                <em class="r">5天前</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- =================笔记列表============= -->
+            <div v-show="showType==3" class="noteList">
+                <div class="bar">
+                    <a href="" class="btn active">最新</a>
+                    <a href="" class="btn">点赞</a>
+                    <a href="" class="chk">
+                        <div class="switch">
+                            <div class="line"></div>
+                            <div class="round"></div>
+                        </div>
+                        <span>只看我的</span>
+                    </a>
+                </div>
+                <ul class="noteTab">
+                    <li class="row">
+                        <div class="media">
+                            <a href="" target="_blank"><a href="" target="_blank"><img src="" alt="头像"></a></a>
+                        </div>
+                        <div class="bd">
+                            <div class="tit">
+                                <a href="" target="_blank">qq_慕虎4441645</a>
+                            </div>
+                            <div class="cont">
+                                <div class="note">
+                                    <a href="">源自：9-3 14-Redis的持久化的AOF的方式</a>
+                                </div>
+                                <a href="javascript:;" class="tip">举报</a>
+                                <div class="autowrap">
+                                    <p>优势：</p>
+                                    <p>1、更高的数据安全性</p>
+                                    <p>同步策略：每秒同步，每修改同步、不同步</p>
+                                    <p>每秒同步：异步完成，效率高，系统出现宕机，那么这一秒中修改的数据就会丢失</p>
+                                    <p>每修改同步：可以看作同步持久化，么一次发生数据的变化，都会立即写到磁盘当中，效率低，但是最安全</p>
+                                </div>
+                                <div class="footer clearfix">
+                                    <div class="l">
+                                        <a title="赞" href="javascript:;" class="btn">
+                                            <span class="icon-thumb-revert"></span>
+                                            <em>0</em>
+                                        </a>
+                                        <a title="采集" href="javascript:;" class="action">
+                                            <i>采集</i>
+                                            <em>0</em>
+                                        </a>
+                                        <a href="" target="_blank" class="action">查看全文</a>
+                                    </div>
+                                    <span title="1天前" class="r timeago">1天前</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- =================评价列表============= -->
+            <div v-show="showType==4" class="evaluateList">
+                <ul class="elist">
+                    <li class="evaluate">
+                        <a href="" class="imgBox">
+                            <img src="" alt="头像">
+                        </a>
+                        <div class="content-box">
+                            <div class="user-info clearfix">
+                                <a href="/u/6677455/courses" class="username">墨逍遥</a>
+                                <div class="star-box">
+                                    <i class="icon-star2 active"></i>
+                                    <i class="icon-star2 active"></i>
+                                    <i class="icon-star2 active"></i>
+                                    <i class="icon-star2 active"></i>
+                                    <i class="icon-star2 active"></i>
+                                    <span>10分</span>
+                                </div>
+                            </div>
+                            <!--user-info end-->
+                            <p class="content">Redis入门课程 很值的学习 非常不错</p>
+                            <div class="info clearfix">
+                                <div class="actions l">
+                                    <a title="赞" href="javascript:;" class="js-pl-praise moco-btn moco-btn-gray-l" data-id="140265">
+                                        <span class="icon-thumb-revert  "></span>
+                                        <em>0</em>
+                                    </a>
+                                </div>
+                                <span class="time r">时间：2019-08-20</span>
+                            </div>
+                        </div>
+                        <!--content end-->
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="aside">
+            <!--侧边栏-->
+        </div>
+    </div>
+</main>
+<!--                     页面主体结束    -->
+<!-- 引入尾部文件 -->
+<footer th:include="parts/common::foot"></footer>
+<!-- 引入JS文件 -->
+<script type="text/javascript" src="/lib/jquery-3.4.1.min.js"></script>
+<!-- <script type="text/javascript" src="/lib/mocoplayer.html5.js"></script> -->
+<script type="text/javascript" src="/lib/vue.js"></script>
+<script type="text/javascript">
+ var videoPage = new Vue({
+    el: '#videoPage',
+    data: {
+        showType: 2, //1显示章节，2显示问答，3显示笔记，4显示评论
+        continueTime: 1.5, //播放进度
+        videoTitle: "test",//视频名称
+        testData: [],
+    },
+    computed: {
+        //
+        test: function(){
+            return "";
+        },
+    },
+    methods: {
+        /**
+         * 提取URL参数值
+         * @param  name: URL参数名称
+         * @return URL参数值
+         */
+        getUrlParam: function(name) {
+            //构造一个含有目标参数的正则表达式对象
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", 'i');
+            //匹配目标参数
+            var r = decodeURIComponent(window.location.search).substr(1).match(reg);
+            //返回参数值
+            if (r != null) return (r[2]);
+            return null;
+        },
+        showPageType: function(type){
+            this.showType = type*1;
+        },
+        toggleCapter: function (event) {
+            var el = event.currentTarget;
+            var capter = $("#caplist");
+            capter.hasClass("active") ? (capter.removeClass("active"), $(el).removeClass("current")) : (capter.addClass("active"), $(el).addClass("current"))
+        },
+        showVintro: function() {
+            $("#vRight").width("400px").find(".vintro").removeClass("closed");
+        },
+        closeVintro: function() {
+            $("#vRight").width("60px").find(".vintro").addClass("closed");
+        },
+    },
+    mounted: function () {
+        var $self = this;
+
+
+
+    } 
+});
+</script>
+</body>
+</html>
